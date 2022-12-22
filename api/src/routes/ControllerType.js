@@ -10,7 +10,7 @@ const getTypes = async () => {
     let types = await Type.findAll();
 
     if (types.length < 1) {
-      //si esta vacia llamo a la api para consumirla
+
       const typeDB = await axios
         .get("https://pokeapi.co/api/v2/type", {
           headers: {
@@ -25,10 +25,8 @@ const getTypes = async () => {
         await Type.create({ name: types[i] });
       }
       let firstCharge = await Type.findAll();
-      console.log("primero yo");
       return firstCharge;
     }
-    console.log("despues yo");
     return types;
   } catch (error) {
     throw error;
