@@ -1,26 +1,19 @@
 import "./App.css";
-import Cover from "./cover/Cover";
-
-import React, { useState, useEffect } from "react";
-
-
-
+import React from "react";
+import Cover from "./Components/cover/Cover";
+import Home from "./Components/Home/Home";
+import PokemonDetail from "./Components/PokemonDetail/PokemonDetail";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
-  const [scrollHeight, setScrollHeight] = useState(0);
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollHeight(position);
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-  }, [scrollHeight]);
+
   return (
     <div className="App">
-
-      {/* <NavBar isScrolling={scrollHeight} /> */}
-      <Cover />
-
+      <Routes>
+        <Route exact path="/" element={<Cover />} />
+        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/pokemons/:id" element={<PokemonDetail />} />
+      </Routes>
     </div>
   );
 }

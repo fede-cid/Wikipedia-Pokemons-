@@ -63,7 +63,7 @@ if(pokes.length<1){
         id: pokeInfo[i].id,
         name: pokeInfo[i].name,
         types: pokeInfo[i].types.map((t) => t.type.name),
-        image: pokeInfo[i].sprites.front_default,
+        image: pokeInfo[i].sprites.other['official-artwork'].front_default,
         attack: pokeInfo[i].stats[1].base_stat,
         weight: pokeInfo[i].weight,
         height: pokeInfo[i].height,

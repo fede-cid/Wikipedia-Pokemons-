@@ -27,7 +27,7 @@ const getPokemonApi = async () => {
       id: pokeInfo.id,
       name: pokeInfo.name,
       types: pokeInfo.types.map((t) => t.type.name),
-      image: pokeInfo.sprites.front_default,
+      image: pokeInfo.sprites.other["official-artwork"].front_default,
       attack: pokeInfo.stats[1].base_stat,
       weight: pokeInfo.weight,
       height: pokeInfo.height,
@@ -77,12 +77,7 @@ const getPokemonApiSearch = async (id, name) => {
     );
     if (name) {
       searchPokemonsApi = await axios.get(
-        ` https://pokeapi.co/api/v2/pokemon/${name}`,
-        {
-          headers: {
-            "Accept-Encoding": "identity",
-          },
-        }
+        ` https://pokeapi.co/api/v2/pokemon/${name}`
       );
     }
     if (searchPokemonsApi) {
@@ -91,7 +86,7 @@ const getPokemonApiSearch = async (id, name) => {
       return {
         id: pokeInfo.data.id,
         name: pokeInfo.data.name,
-        image: pokeInfo.data.sprites.front_default,
+        image: pokeInfo.data.sprites.other["official-artwork"].front_default,
         hp: pokeInfo.data.stats[0].base_stat,
         attack: pokeInfo.data.stats[1].base_stat,
         defense: pokeInfo.data.stats[2].base_stat,

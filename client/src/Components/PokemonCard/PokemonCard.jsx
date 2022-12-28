@@ -1,0 +1,64 @@
+import React from "react";
+
+import { useSelector } from "react-redux";
+import "./pokemonCard.css";
+
+const PokemonCard = () => {
+  const last = useSelector((state) => state.lastPokemonIndex);
+  const first = useSelector((state) => state.firstPokemonIndex);
+  const pokemonOne = useSelector((state) => state.pokemonSearch);
+  const pokemons = useSelector((state) => state.pokemons);
+  console.log(pokemonOne);
+  return (
+    <>
+      <div className="pokemons-container">
+        {pokemonOne && pokemonOne.length !== 0 ? (
+          <div className="box">
+            <div className="card">
+              <div className="imgBx">
+                <a href={`/pokemons/${pokemonOne.id}`}>
+                  <img src={pokemonOne.image} alt={pokemonOne.name} />
+                </a>
+              </div>
+              <div className="details">
+                <h2>
+                  Name: {pokemonOne.name} Attack: {pokemonOne.attack}
+                  <br></br>
+                  <span>
+                    Type:{" "}
+                    {pokemonOne.types &&
+                      pokemonOne.types.map((type) => {
+                        return type.name;
+                      })}
+                  </span>
+                  <br></br>
+                </h2>
+              </div>
+            </div>
+          </div>
+        ) : (
+          pokemons.slice(first, last).map((c) => (
+            <div className="box">
+              <div className="card">
+                <div className="imgBx">
+                  <a href={`/pokemons/${c.id}`}>
+                    <img src={c.image} alt={c.name} />
+                  </a>
+                </div>
+                <div className="details">
+                  <h2>
+                    Name: {c.name} Attack: {c.attack}
+                    <br></br>
+                    <span>Type: {c.types.toString()}</span>
+                    <br></br>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+    </>
+  );
+};
+export default PokemonCard;

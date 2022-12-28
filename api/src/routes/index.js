@@ -13,8 +13,25 @@ const router = Router();
 
 router.get("/pokemons", async (req, res) => {
   try {
+    const {name} = req.query
+    if(name){  const resultByApi = await getPokemonApiSearch(name);
+      const resultByDB = await getPokemonDBSearch(undefined, name);
+    
+      if (resultByApi) {
+        res.status(200).json(resultByApi);
+      }
+      if (resultByDB) {
+        res.status(200).json(resultByDB);
+      }
+      if (!resultByApi && !resultByDB) {
+        res
+          .status(400)
+          .json({ msj: `No se encuentra el Pokemon ${name} solicitado` });
+      }
+    }
+    if(!name){
     let results = await getAllPokemons();
-    res.status(200).json(results);
+    res.status(200).json(results);}
     // res.json(resultado);
   } catch (error) {
     res.status(404).json({ error: "error" });
@@ -29,23 +46,6 @@ router.get("/pokemons/type", async (req, res) => {
   }
 });
 
-router.get("/pokemonsName/:name", async (req, res) => {
-  const { name } = req.params;
-  const resultByApi = await getPokemonApiSearch(name);
-  const resultByDB = await getPokemonDBSearch(undefined, name);
-
-  if (resultByApi) {
-    res.status(200).json(resultByApi);
-  }
-  if (resultByDB) {
-    res.status(200).json(resultByDB);
-  }
-  if (!resultByApi && !resultByDB) {
-    res
-      .status(400)
-      .json({ msj: `No se encuentra el Pokemon ${name} solicitado` });
-  }
-});
 
 router.get("/pokemonsId/:id", async (req, res) => {
   const { id } = req.params;

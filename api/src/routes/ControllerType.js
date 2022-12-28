@@ -25,6 +25,7 @@ const getTypes = async () => {
         await Type.create({ name: types[i] });
       }
       let firstCharge = await Type.findAll();
+      
       return firstCharge;
     }
     return types;
