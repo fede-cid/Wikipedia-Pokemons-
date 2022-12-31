@@ -1,28 +1,28 @@
-
 import axios from "axios";
-// /pokemons
-// /pokemons/type
-// /pokemonsName/:name
-// /pokemonsId/:id
+
+
 export const GET_POKEMON = "GET_POKEMON";
 export const GET_POKEMON_DETAIL_ID = "GET_POKEMON_DETAIL_ID";
 export const GET_POKEMON_DETAIL_NAME = "GET_POKEMON_DETAIL_NAME";
 export const CREATE_POKEMON = "CREATE_POKEMON";
 export const DELETE_POKEMON = "DELETE_POKEMON";
 export const GET_TYPE = "GET_TYPE";
-export const TOTAL_PAGE = "TOTAL_PAGE"
-export const ACTUAL_PAGE = "ACTUAL_PAGE"
-export const PREV_PAGE = "PREV_PAGE"
-export const NEXT_PAGE = "NEXT_PAGE"
-
-
-
-
+export const TOTAL_PAGE = "TOTAL_PAGE";
+export const ACTUAL_PAGE = "ACTUAL_PAGE";
+export const PREV_PAGE = "PREV_PAGE";
+export const NEXT_PAGE = "NEXT_PAGE";
+export const FILTER_BY_TYPES = "FILTER_BY_TYPES";
+export const FILTER_CREATED = "FILTER_CREATED";
+export const ORDER_BY_NAME_OR_STRENGH = "ORDER_BY_NAME_OR_STRENGH";
+export const RELOAD_POKEMONS = "RELOAD_POKEMONS";
+export const POST_POKEMON = "POST_POKEMON";
 
 export const getPokemon = (name) => {
-  if(name){
+  if (name) {
     return async function (dispatch) {
-      const result = await axios.get(`http://localhost:3001/pokemons?name=${name}`);
+      const result = await axios.get(
+        `http://localhost:3001/pokemons?name=${name}`
+      );
       return dispatch({
         type: GET_POKEMON_DETAIL_NAME,
         payload: result.data,
@@ -38,6 +38,17 @@ export const getPokemon = (name) => {
   };
 };
 
+export function postPokemon(payload) {
+  return async function (dispatch) {
+    const pokemon = await axios.post("http://localhost:3001/pokemons", payload);
+
+    return {
+      type: POST_POKEMON,
+      payload: pokemon,
+    };
+  };
+}
+
 export const getPokemonDetailBYID = (id) => {
   return async function (dispatch) {
     const result = await axios.get(`http://localhost:3001/pokemonsId/${id}`);
@@ -47,18 +58,14 @@ export const getPokemonDetailBYID = (id) => {
     });
   };
 };
-
-
 export const getTypes = () => {
   return async function (dispatch) {
-    return fetch("http://localhost:3001/pokemons/type")
-      .then((response) => response.json())
-      .then((types) =>
-        dispatch({
-          type: GET_TYPE,
-          payload: types.map((s) => s.type),
-        })
-      );
+    const result = await axios.get("http://localhost:3001/pokemons/type");
+    console.log(result);
+    return dispatch({
+      type: GET_TYPE,
+      payload: result.data,
+    });
   };
 };
 
@@ -71,6 +78,12 @@ export const createPokemon = (payload) => {
   };
 };
 
+export function reloadPokemons() {
+  return {
+    type: "RELOAD_POKEMONS",
+  };
+}
+
 export const deletePokemon = (payload) => {
   return {
     type: DELETE_POKEMON,
@@ -79,19 +92,26 @@ export const deletePokemon = (payload) => {
 };
 
 export const actualPage = (payload) => {
- return { type:ACTUAL_PAGE,
-  payload:payload
-}}
+  return { type: ACTUAL_PAGE, payload: payload };
+};
 
-// export const previousPage = (payload) => {
-//  return { type:PREV_PAGE,
-//   payload:payload-1
-// }}
+export function filterPokemonsByType(payload) {
+  return {
+    type: "FILTER_BY_TYPES",
+    payload: payload,
+  };
+}
 
-// export const nextPage = (payload) => {
-//  return { type:NEXT_PAGE,
-//   payload:payload+1
+export function filterCreated(payload) {
+  return {
+    type: "FILTER_CREATED",
+    payload: payload,
+  };
+}
 
-// }}
-
-
+export function orderByNameOrStrengh(payload) {
+  return {
+    type: "ORDER_BY_NAME_OR_STRENGH",
+    payload: payload,
+  };
+}

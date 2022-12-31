@@ -4,25 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import PokemonCard from "../PokemonCard/PokemonCard";
 import "./home.css";
 import NavBar from "../navBar/NavBar";
+import Pagination from "../pagination/Pagination";
+import Order from "../Order/Order";
 
 export default function Home() {
-  let pokemonsPage = useSelector((state) => state.pokemonsTotalPage);
-  const currentPage = useSelector((state) => state.currentPage);
-  const pkpage = pokemonsPage;
-
-  const dispatch = useDispatch();
-  const page = [];
-  while (pokemonsPage > 0) {
-    page.unshift(pokemonsPage);
-    pokemonsPage = pokemonsPage - 1;
-  }
-
   React.useEffect(() => {
     dispatch(actions.getPokemon());
-  }, []);
+    dispatch(actions.getTypes());
+  }, [Order]);
+  const pokemonSearch = useSelector((state) => state.pokemonSearch);
 
+  const dispatch = useDispatch();
 
-    const [scrollHeight, setScrollHeight] = useState(0);
+  const [scrollHeight, setScrollHeight] = useState(0);
   const handleScroll = () => {
     const position = window.pageYOffset;
     setScrollHeight(position);
@@ -32,44 +26,18 @@ export default function Home() {
   }, [scrollHeight]);
   return (
     <div className="home">
-      
-      <NavBar isScrolling={scrollHeight}/>
-      <div className="targets"><PokemonCard /></div>
-      
-      <button
-        className="button"
-        disabled={currentPage == 1 ? true : false}
-        onClick={() => dispatch(actions.actualPage(currentPage - 1))}
-      >
-        Previous
-      </button>
-      {"  "}
-      <span className="button">...</span> {"  "}
-      {page.map((e) => (
+      <NavBar isScrolling={scrollHeight} />
+      <div className="targets">
+        <PokemonCard />
+      </div>
+      {pokemonSearch.length == 0 ? (
         <>
-          <button
-            className={
-              currentPage == e
-                ? "button-principal"
-                : currentPage + 1 >= e && currentPage - 1 <= e
-                ? "button"
-                : "button-false"
-            }
-            onClick={() => dispatch(actions.actualPage(e))}
-          >
-            {e}
-          </button>
-          {"  "}
+          <Pagination />
+          <Order />
         </>
-      ))}
-      <span className="button">...</span>{" "}
-      <button
-        className="button"
-        disabled={currentPage === pkpage ? true : false}
-        onClick={() => dispatch(actions.actualPage(currentPage + 1))}
-      >
-        next
-      </button>
+      ) : (
+        <p>encontraste tu pokemon</p>
+      )}
     </div>
   );
 }

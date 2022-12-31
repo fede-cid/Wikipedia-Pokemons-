@@ -9,9 +9,11 @@ import {
   GET_TYPE,
   TOTAL_PAGE,
   ACTUAL_PAGE,
-  // NEXT_PAGE,
-  // PREV_PAGE,
-    
+  FILTER_BY_TYPES,
+  FILTER_CREATED,
+  ORDER_BY_NAME_OR_STRENGH,
+  RELOAD_POKEMONS,
+  POST_POKEMON   
 } from "../Actions/index";
 
 export const pokemonsPerPage = 12
@@ -27,6 +29,7 @@ const initialState = {
   nextPage:0,
   firstPokemonIndex:0,
   lastPokemonIndex:12,
+  allPokemons:[]
 };
 
 
@@ -37,8 +40,39 @@ const rootReducer = (state = initialState, action) => {
           return {
             ...state,
             pokemons: action.payload,
+            
             pokemonsTotalPage:Math.ceil(action.payload.length/pokemonsPerPage)
           };
+          case RELOAD_POKEMONS:
+            const apiPokesSort = state.allPokemons.filter( el => !el.createdInDb).sort(function (a, b){
+                if(a.id > b.id){
+                    return 1;
+                }
+                if(b.id > a.id){
+                    return -1;
+                }
+                return 0;
+            }) 
+            const dbPokesSort = state.allPokemons.filter( el => el.createdInDb).sort(function (a, b){
+                if(a.id > b.id){
+                    return 1;
+                }
+                if(b.id > a.id){
+                    return -1;
+                }
+                return 0;
+            }) 
+            let sortedArrayNormal = [...apiPokesSort, ...dbPokesSort]
+
+            return {
+                ...state,
+                pokemons: sortedArrayNormal
+            }   
+            case POST_POKEMON:
+              return{
+                  ...state
+              }
+          
       case GET_POKEMON_DETAIL_ID:
         return {
           ...state,
@@ -49,7 +83,7 @@ const rootReducer = (state = initialState, action) => {
         return {
           ...state,
           pokemonSearch: action.payload,
-          pokemonsTotalPage:Math.ceil(action.payload.length/pokemonsPerPage)
+          pokemonsTotalPage:0
         };
       case CREATE_POKEMON:
         return {
@@ -81,6 +115,97 @@ const rootReducer = (state = initialState, action) => {
             lastPokemonIndex: pokemonsPerPage * action.payload,
         }
 
+        case FILTER_BY_TYPES:
+            const allPokemons = state.allPokemons
+            const statusFiltered = action.payload === "All" ? allPokemons : allPokemons.filter(el => el.types.includes(action.payload) )
+            
+            return {
+                ...state,
+                pokemons: statusFiltered.length ? statusFiltered : [`${action.payload} Pokemons`]
+            }
+
+        case FILTER_CREATED:
+            const allPokemons2 = state.allPokemons
+            const statusFiltered2 = action.payload === "Created" ? allPokemons2.filter(el => el.createdInDb) : allPokemons2.filter(el => !el.createdInDb) 
+
+            return {
+                ...state,
+                pokemons: action.payload === 'All' ? allPokemons2 : statusFiltered2.length ? statusFiltered2 : ['Pokemons created']
+            }
+
+        case ORDER_BY_NAME_OR_STRENGH:
+            let sortedArray
+
+            if(action.payload === 'asc'){
+                sortedArray = state.pokemons.sort(function (a, b){
+                        if(a.name > b.name){
+                            return 1;
+                        }
+                        if(b.name > a.name){
+                            return -1;
+                        }
+                        return 0;
+                    }) 
+            }
+            if(action.payload === 'desc'){
+                sortedArray = state.pokemons.sort(function (a, b){
+                        if(a.name > b.name){
+                            return -1;
+                        }
+                        if(b.name > a.name){
+                            return 1;
+                        }
+                        return 0;
+                    }) 
+            }
+            if(action.payload === 'HAttack'){
+                sortedArray = state.pokemons.sort(function (a, b){
+                        if(a.attack > b.attack){
+                            return -1;
+                        }
+                        if(b.attack > a.attack){
+                            return 1;
+                        }
+                        return 0;
+                    }) 
+            }
+            if(action.payload === 'LAttack'){
+                sortedArray = state.pokemons.sort(function (a, b){
+                        if(a.attack > b.attack){
+                            return 1;
+                        }
+                        if(b.attack > a.attack){
+                            return -1;
+                        }
+                        return 0;
+                    }) 
+            }
+            if(action.payload === 'normal'){
+                const apiPokes = state.pokemons.filter( el => !el.createdInDb).sort(function (a, b){
+                    if(a.id > b.id){
+                        return 1;
+                    }
+                    if(b.id > a.id){
+                        return -1;
+                    }
+                    return 0;
+                }) 
+                const dbPokes = state.pokemons.filter( el => el.createdInDb).sort(function (a, b){
+                    if(a.id > b.id){
+                        return 1;
+                    }
+                    if(b.id > a.id){
+                        return -1;
+                    }
+                    return 0;
+                }) 
+                sortedArray = [...apiPokes, ...dbPokes]
+            }
+
+            return {
+                ...state,
+                pokemons: sortedArray
+            }  
       default:
         return state;
     }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./NavBar.css";
 import * as actions from "../../Redux/Actions";
-import { Link } from "react-router-dom";
+
 
 const NavBar = ({ isScrolling }) => {
   const toTheTop = () => {
