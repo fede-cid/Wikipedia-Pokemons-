@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 export const GET_POKEMON = "GET_POKEMON";
 export const GET_POKEMON_DETAIL_ID = "GET_POKEMON_DETAIL_ID";
 export const GET_POKEMON_DETAIL_NAME = "GET_POKEMON_DETAIL_NAME";

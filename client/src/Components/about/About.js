@@ -1,13 +1,10 @@
-import React from 'react'
-import './About.css'
-
+import React from "react";
+import "./About.css";
 
 const About = () => {
   return (
-    <div className='about-container'>
-      <div className='about-desc'>
-        </div>
-
+    <div className="about-container">
+      <div className="about-desc"></div>
     </div>
   );
 };

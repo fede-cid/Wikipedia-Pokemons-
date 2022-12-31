@@ -1,39 +1,33 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import * as actions from "../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 
-
 function Order() {
+  const dispatch = useDispatch();
+  const [orden, setOrden] = useState("");
+  const types = useSelector((state) => state.types);
+  React.useEffect(() => {
+    dispatch(actions.getTypes());
+  }, []);
 
+  function handleClick(e) {
+    e.preventDefault();
+    dispatch(actions.reloadPokemons());
+  }
 
+  function handleFilterCreated(e) {
+    dispatch(actions.filterCreated(e.target.value));
+  }
 
-const dispatch = useDispatch();
-const [orden, setOrden] = useState("");
-const types = useSelector((state) => state.types);
-React.useEffect(() => {
+  function handleFilterByType(e) {
+    dispatch(actions.filterPokemonsByType(e.target.value));
+  }
 
-  dispatch(actions.getTypes());
-}, []);
-
-function handleClick(e) {
-  e.preventDefault();
-  dispatch(actions.reloadPokemons());
-}
-
-function handleFilterCreated(e) {
-  dispatch(actions.filterCreated(e.target.value));
-}
-
-function handleFilterByType(e) {
-  dispatch(actions.filterPokemonsByType(e.target.value));
-}
-
-function handleSort(e) {
-  e.preventDefault();
-  dispatch(actions.orderByNameOrStrengh(e.target.value));
-  // setOrden(`Ordenado ${e.target.value}`);
-}
-
+  function handleSort(e) {
+    e.preventDefault();
+    dispatch(actions.orderByNameOrStrengh(e.target.value));
+    // setOrden(`Ordenado ${e.target.value}`);
+  }
 
   return (
     <div>

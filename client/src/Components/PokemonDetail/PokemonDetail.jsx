@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./PokemonDetail.css";
-import pokebola from '../media/pokebola.png'
+import pokebola from "../media/pokebola.png";
 
 const PokemonDetail = () => {
   const dispatch = useDispatch();
@@ -18,9 +18,9 @@ const PokemonDetail = () => {
 
   return (
     <div className="wrapper">
-      <h1>{pokeInfo.name}</h1> 
+      <h1>{pokeInfo.name}</h1>
       <p className="attack">{pokeInfo.attack}</p>
-      <img className='pokebola'src={pokebola} alt='pokebola'/>
+      <img className="pokebola" src={pokebola} alt="pokebola" />
       <div className="pokemon-cart">
         <div className="pokemon-cart-image">
           <img

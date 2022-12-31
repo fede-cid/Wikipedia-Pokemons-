@@ -1,20 +1,19 @@
-
-import './pagination.css'
+import "./pagination.css";
 import React from "react";
 import * as actions from "../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 
 function Pagination() {
-    let pokemonsPage = useSelector((state) => state.pokemonsTotalPage);
-    const currentPage = useSelector((state) => state.currentPage);
-    const pkpage = pokemonsPage;
-  
-    const dispatch = useDispatch();
-    const page = [];
-    while (pokemonsPage > 0) {
-        page.unshift(pokemonsPage);
-        pokemonsPage = pokemonsPage - 1;
-      }
+  let pokemonsPage = useSelector((state) => state.pokemonsTotalPage);
+  const currentPage = useSelector((state) => state.currentPage);
+  const pkpage = pokemonsPage;
+
+  const dispatch = useDispatch();
+  const page = [];
+  while (pokemonsPage > 0) {
+    page.unshift(pokemonsPage);
+    pokemonsPage = pokemonsPage - 1;
+  }
   return (
     <div>
       <button
@@ -52,7 +51,7 @@ function Pagination() {
         next
       </button>
     </div>
-  )
+  );
 }
 
-export default Pagination
+export default Pagination;
