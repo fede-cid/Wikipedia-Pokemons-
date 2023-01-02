@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./NavBar.css";
 import * as actions from "../../Redux/Actions";
+import Order from "../Order/Order";
+import Music from "../Music/Music";
 
 const NavBar = ({ isScrolling }) => {
+  const pokemonSearch = useSelector((state) => state.pokemonSearch);
+  const pokemonSearc = useSelector((state) => state.home);
+  console.log(pokemonSearc)
   const toTheTop = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
@@ -13,10 +18,12 @@ const NavBar = ({ isScrolling }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setName("");
+    dispatch(actions.home(true))
     name.length > 0 && dispatch(actions.getPokemon(name));
   };
 
   function onInputChange(e) {
+   
     setName(e.target.value);
   }
 
@@ -27,19 +34,16 @@ const NavBar = ({ isScrolling }) => {
           className="inputSearch"
           type="text"
           onChange={onInputChange}
+
           value={name}
           placeholder="Search POKEMONS"
         />
-
-        <button className="buttonSearch" type="submit">
+        <div className="music"><Music/></div>
+        {pokemonSearch.length > 0 ? "" : <Order />}
+        <button className="buttonSearch" type="submit" onClick={()=>dispatch(actions.home(true))}>
           Search
         </button>
       </form>
-
-      <div className="navbar-logo" onClick={toTheTop}>
-        {/* <Link to="/">Home</Link>
-        <Link to="/character/create">Create Character</Link> */}
-      </div>
     </div>
   );
 };

@@ -1,21 +1,24 @@
-import React from "react";
-
+import React, { useState } from "react";
+import * as actions from "../../Redux/Actions/index";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import "./pokemonCard.css";
 
 const PokemonCard = () => {
+  const dispatch = useDispatch();
   const last = useSelector((state) => state.lastPokemonIndex);
   const first = useSelector((state) => state.firstPokemonIndex);
   const pokemonOne = useSelector((state) => state.pokemonSearch);
   const pokemons = useSelector((state) => state.pokemons);
-  console.log(pokemonOne);
+  const allPokemons = useSelector((state) => state.home);
+
   return (
     <>
       <div className="pokemons-container">
-        {pokemonOne && pokemonOne.length !== 0 ? (
+        {allPokemons && pokemonOne && pokemonOne.length !== 0 ? (
           <div className="box">
             <div className="card">
-              <div className="imgBx">
+              <div id={`${pokemonOne.types[0].name}`} className={`imgBx`}>
                 <a href={`/pokemons/${pokemonOne.id}`}>
                   <img src={pokemonOne.image} alt={pokemonOne.name} />
                 </a>
@@ -28,21 +31,33 @@ const PokemonCard = () => {
                     Type:{" "}
                     {pokemonOne.types &&
                       pokemonOne.types.map((type) => {
-                        return type.name;
+                        console.log(type);
+                        return type.name + " ";
                       })}
                   </span>
                   <br></br>
                 </h2>
               </div>
             </div>
+            <div className="pokemon-search">
+              <h1>Encontraste a tu pokemon {pokemonOne.name}</h1>
+            </div>
+            <button
+              className="navbar-logo"
+              onClick={() => dispatch(actions.home(false))}
+            >
+              {" "}
+              HOME
+            </button>
           </div>
         ) : (
           pokemons.slice(first, last).map((c) => (
             <div className="box">
               <div className="card">
-                <div className="imgBx">
+                <div id={`${c.types[0]}`} className={`imgBx `}>
                   <a href={`/pokemons/${c.id}`}>
                     <img src={c.image} alt={c.name} />
+                    {console.log(c.types[0])}
                   </a>
                 </div>
                 <div className="details">

@@ -1,0 +1,14 @@
+.player{
+    background-color: rgba(216, 181, 181, 0);
+    color: white;
+    border: none;
+    width: 10px;
+}
+
+.logo-music{
+    width: 170px;
+    position: absolute;
+    left: -177px;
+    height: 60px;
+
+}

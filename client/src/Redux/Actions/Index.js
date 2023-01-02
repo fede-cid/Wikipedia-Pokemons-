@@ -15,6 +15,7 @@ export const FILTER_CREATED = "FILTER_CREATED";
 export const ORDER_BY_NAME_OR_STRENGH = "ORDER_BY_NAME_OR_STRENGH";
 export const RELOAD_POKEMONS = "RELOAD_POKEMONS";
 export const POST_POKEMON = "POST_POKEMON";
+export const HOME = "HOME";
 
 export const getPokemon = (name) => {
   if (name) {
@@ -39,7 +40,7 @@ export const getPokemon = (name) => {
 
 export function postPokemon(payload) {
   return async function (dispatch) {
-    const pokemon = await axios.post("http://localhost:3001/pokemons", payload);
+    const pokemon = await axios.post("http://localhost:3001/pokemonsCreate", payload);
 
     return {
       type: POST_POKEMON,
@@ -114,3 +115,10 @@ export function orderByNameOrStrengh(payload) {
     payload: payload,
   };
 }
+export function home(payload) {
+  return {
+    type: "HOME",
+    payload: payload,
+  };
+}
+

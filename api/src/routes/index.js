@@ -63,7 +63,7 @@ router.get("/pokemonsId/:id", async (req, res) => {
   }
 });
 
-router.post("/pokemons", async (req, res) => {
+router.post("/pokemonsCreate", async (req, res) => {
   let { id, name, types, image, attack, weight, height, hp, speed, defense } =
     req.body;
   try {

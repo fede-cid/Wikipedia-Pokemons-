@@ -14,12 +14,18 @@ function Pagination() {
     page.unshift(pokemonsPage);
     pokemonsPage = pokemonsPage - 1;
   }
+  const toTheTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  };
+
   return (
-    <div>
+    <div className='pagination'>
       <button
         className="button"
         disabled={currentPage === 1 ? true : false}
-        onClick={() => dispatch(actions.actualPage(currentPage - 1))}
+        onClick={() => {
+          toTheTop()
+          dispatch(actions.actualPage(currentPage - 1))}}
       >
         Previous
       </button>
@@ -35,7 +41,9 @@ function Pagination() {
                 ? "button"
                 : "button-false"
             }
-            onClick={() => dispatch(actions.actualPage(e))}
+            onClick={() => {
+              toTheTop()
+              dispatch(actions.actualPage(e))}}
           >
             {e}
           </button>
@@ -46,7 +54,9 @@ function Pagination() {
       <button
         className="button"
         disabled={currentPage === pkpage ? true : false}
-        onClick={() => dispatch(actions.actualPage(currentPage + 1))}
+        onClick={() => {
+          toTheTop()
+          dispatch(actions.actualPage(currentPage + 1))}}
       >
         next
       </button>

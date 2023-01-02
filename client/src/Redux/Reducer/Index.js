@@ -12,6 +12,7 @@ import {
   ORDER_BY_NAME_OR_STRENGH,
   RELOAD_POKEMONS,
   POST_POKEMON,
+  HOME
 } from "../Actions/index";
 
 export const pokemonsPerPage = 12;
@@ -28,6 +29,7 @@ const initialState = {
   firstPokemonIndex: 0,
   lastPokemonIndex: 12,
   allPokemons: [],
+  home:true
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -36,7 +38,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         pokemons: action.payload,
-
+        allPokemons: action.payload,
         pokemonsTotalPage: Math.ceil(action.payload.length / pokemonsPerPage),
       };
     case RELOAD_POKEMONS:
@@ -104,6 +106,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         pokemonsTotalPage: action.payload,
       };
+    case HOME:
+      return {
+        ...state,
+        home: action.payload,
+      };
     case ACTUAL_PAGE:
       return {
         ...state,
@@ -126,24 +133,30 @@ const rootReducer = (state = initialState, action) => {
         pokemons: statusFiltered.length
           ? statusFiltered
           : [`${action.payload} Pokemons`],
+        pokemonsTotalPage: Math.ceil(statusFiltered.length / pokemonsPerPage)
       };
 
     case FILTER_CREATED:
-      const allPokemons2 = state.allPokemons;
-      const statusFiltered2 =
-        action.payload === "Created"
-          ? allPokemons2.filter((el) => el.createdInDb)
-          : allPokemons2.filter((el) => !el.createdInDb);
-
+      let allPokemons2 = state.allPokemons;
+      let result
+      if(action.payload === "Created"){
+        result = allPokemons2.filter((el) => el.id.length > 1)
+      }
+      if(action.payload === "All"){
+        result = allPokemons2
+      }
+      if(action.payload === "Api"){
+        result = allPokemons2.filter((el) => typeof el.id === 'number' )
+      }
+   
       return {
         ...state,
-        pokemons:
-          action.payload === "All"
-            ? allPokemons2
-            : statusFiltered2.length
-            ? statusFiltered2
-            : ["Pokemons created"],
+        pokemons:result,
+        pokemonsTotalPage: Math.ceil(result.length / pokemonsPerPage)
+,
       };
+  
+
 
     case ORDER_BY_NAME_OR_STRENGH:
       let sortedArray;

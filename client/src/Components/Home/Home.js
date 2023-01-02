@@ -6,6 +6,8 @@ import "./home.css";
 import NavBar from "../navBar/NavBar";
 import Pagination from "../pagination/Pagination";
 import Order from "../Order/Order";
+import Loading from "../loading/Loading";
+
 
 export default function Home() {
   React.useEffect(() => {
@@ -13,6 +15,7 @@ export default function Home() {
     dispatch(actions.getTypes());
   }, [Order]);
   const pokemonSearch = useSelector((state) => state.pokemonSearch);
+  const pokemons = useSelector((state) => state.pokemons);
 
   const dispatch = useDispatch();
 
@@ -25,20 +28,25 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll);
   }, [scrollHeight]);
   return (
-    <div className="home">
-      <NavBar isScrolling={scrollHeight} />
-      <div className="targets">
-        <PokemonCard />
-      </div>
-      {pokemonSearch.length == 0 ? (
-        <>
-          <Pagination />
-          <Order />
-        </>
+    <>
+      {pokemons.length < 1 ? (
+        <div>
+          <Loading />
+        </div>
       ) : (
-        <p>encontraste tu pokemon</p>
+        <div className="home">
+          <div className="cards"> <NavBar isScrolling={scrollHeight} />
+          <PokemonCard />
+          {pokemonSearch.length == 0 ? (
+            <>
+              <Pagination />
+            </>
+          ) : undefined}
+          </div>
+         
+        </div>
       )}
-    </div>
+    </>
   );
 }
 

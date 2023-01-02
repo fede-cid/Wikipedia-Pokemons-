@@ -1,13 +1,19 @@
 body {
-  background-color: beige;
+  background-image: url("../media/fondo-PokemonDetails.webp");
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
+
 .wrapper {
   background-image: url("../media/cardPokemon.png");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 603px;
-  width: 427px;
-  border-radius: 19px;
+  position: relative;
+  height: 673px;
+  margin: auto;
+  width: 478px;
+  border-radius: 21px;
 }
 .wrapper > h1 {
   position: relative;
@@ -21,36 +27,38 @@ body {
 
 .pokebola {
   position: relative;
-  left: -152px;
-  top: -89px;
+  position: relative;
+  left: -171px;
+  top: -98px;
   font-weight: 700;
   font-size: 30px;
-  height: 85px;
+  height: 97px;
   width: 129px;
 }
 .attack {
   position: relative;
-  left: 131px;
-  top: -4px;
+  left: 170px;
+  top: -8px;
   color: #961e1e;
   font-weight: 700;
   font-size: 30px;
   width: 427px;
 }
 .pokemon-cart-image {
-  width: 333px;
-  height: 219px;
+  width: 371px;
+  height: 243px;
   background-color: rgb(255, 255, 255);
   position: relative;
-  top: -98.5px;
-  left: 48px;
+  top: -107.5px;
+  left: 54px;
 }
 
 .pokemon-image {
-  width: 343px;
+  width: 404px;
   position: relative;
-  height: 292px;
-  top: -36px;
+  left: -17px;
+  height: 350px;
+  top: -58px;
 }
 .box-cart {
   font-size: 14px;
@@ -83,3 +91,50 @@ p {
   margin-right: 13%;
   text-align: center;
 }
+
+
+.heart-Img {
+  position: relative;
+  width: 50px;
+  left: 131px;
+  height: 55px;
+  top: 2px;
+}
+
+.heart{
+  position: relative;
+    font-size: 60px;
+    bottom: 109px;
+    left: 68px;
+}
+
+.type{
+  position: relative;
+  bottom: 80px;
+  right: 11px;
+}
+.defense{
+  position: relative;
+  bottom: 80px;
+  right: 108px;
+}
+.speed{
+  position: relative;
+  bottom: 80px;
+  right: 112px;
+}
+.weight{
+  position: relative;
+  bottom: 240px;
+  right: 71px;
+
+
+}
+.height{
+  position: relative;
+    bottom: 254px;
+    right: 110px;
+
+}
+
+

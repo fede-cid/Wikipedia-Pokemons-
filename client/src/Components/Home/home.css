@@ -1,36 +1,14 @@
-/* body {
-  background-image: url("../media/fondo.gif");
-  background-repeat: no-repeat;
+.home {
+  background-image: url("../media/mundo.webp");
+  min-height: 100vh;
+  width: 100vw;
+  height: 100%;
+  position: relative;
   background-size: cover;
-} */
-
-.button {
-  border: 1px solid #f8f8f8;
-  padding: 10px;
-  background-color: #ffffff;
-  color: #000000;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-family: "Helvetica", sans-serif;
-  border-radius: 50px;
-  text-align: center;
-  justify-content: center;
+  background-repeat: no-repeat;
 }
 
-.button-principal {
-  border: 1px solid #f7f7f7;
-  padding: 15px;
-  font-size: 19px;
-  background-color: #020202;
-  color: #f8f8f8;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-family: "Helvetica", sans-serif;
-  border-radius: 7px;
-  text-align: center;
-  justify-content: center;
-}
-
-.button-false {
-  display: none;
+.cards{
+  padding-top: 115px;
+  padding-bottom: 50px;
 }

@@ -13,6 +13,8 @@ const getPokemonApi = async () => {
       },
     })
     .then((r) => r.data.results);
+
+    // console.log(results ,',primero yo')
   const pokemonInfo = [];
 
   for (let i = 0; i < results.length; i++) {
@@ -21,6 +23,7 @@ const getPokemonApi = async () => {
         "Accept-Encoding": "identity",
       },
     });
+    
 
     const pokeInfo = pokemons.data;
     pokemonInfo.push({
@@ -75,6 +78,7 @@ const getPokemonApiSearch = async (id, name) => {
         },
       }
     );
+
     if (name) {
       searchPokemonsApi = await axios.get(
         ` https://pokeapi.co/api/v2/pokemon/${name}`
