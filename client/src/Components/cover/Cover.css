@@ -23,7 +23,7 @@
   font-weight: 700;
   color: rgb(0, 0, 0);
   font-size: 100px;
-  text-shadow: 1px 1px 2px rgb(255, 255, 255);
+  text-shadow: 1px 1px 2px rgb(0, 0, 0);
   /* :rgb(255, 255, 255);  */
   background-color: rgba(255, 255, 255, 0);
   /* opacity: 0.1; */
@@ -35,4 +35,33 @@
   margin-top: 8px;
   color: rgb(0, 0, 0);
   font-size: 32px;
+}
+
+.bn3637 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 2rem;
+  font-weight: 700;
+  font-size: 30px;
+  height: 100px;
+  background-color: #6372f800;
+  width: 724px;
+  position: relative;
+  top: 275px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  backface-visibility: hidden;
+  border: 0.3rem solid transparent;
+  border-radius: 3rem;
+  cursor: pointer;
+}
+.bn38 {
+  border-color: transparent;
+  transition: background-color 0.3s ease-in-out;
+}
+  
+.bn38:hover {
+  background-color: #0c0c0c;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import * as actions from "../../Redux/Actions/index";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -10,12 +10,12 @@ const PokemonCard = () => {
   const first = useSelector((state) => state.firstPokemonIndex);
   const pokemonOne = useSelector((state) => state.pokemonSearch);
   const pokemons = useSelector((state) => state.pokemons);
-  const allPokemons = useSelector((state) => state.home);
+ 
 
   return (
     <>
       <div className="pokemons-container">
-        {allPokemons && pokemonOne && pokemonOne.length !== 0 ? (
+        { pokemonOne && pokemonOne.length !== 0 ? (
           <div className="box">
             <div className="card">
               <div id={`${pokemonOne.types[0].name}`} className={`imgBx`}>
@@ -31,7 +31,6 @@ const PokemonCard = () => {
                     Type:{" "}
                     {pokemonOne.types &&
                       pokemonOne.types.map((type) => {
-                        console.log(type);
                         return type.name + " ";
                       })}
                   </span>
@@ -44,27 +43,28 @@ const PokemonCard = () => {
             </div>
             <button
               className="navbar-logo"
-              onClick={() => dispatch(actions.home(false))}
+              onClick={() => dispatch(actions.getPokemon())}
             >
               {" "}
               HOME
             </button>
           </div>
         ) : (
-          pokemons.slice(first, last).map((c) => (
-            <div className="box">
+          pokemons.slice(first, last).map((c,index) => (
+            <div key={`${index}${c.id}`} className="box">
               <div className="card">
                 <div id={`${c.types[0]}`} className={`imgBx `}>
                   <a href={`/pokemons/${c.id}`}>
-                    <img src={c.image} alt={c.name} />
-                    {console.log(c.types[0])}
+                    <img src={c.image}  alt={c.name} />
                   </a>
                 </div>
                 <div className="details">
                   <h2>
                     Name: {c.name} Attack: {c.attack}
                     <br></br>
-                    <span>Type: {c.types.toString()}</span>
+                    <span>Type: {c.id.length>1 ? c.types.map((type) => {
+                        return type.name + " ";
+                      }) : c.types.toString()}</span>
                     <br></br>
                   </h2>
                 </div>

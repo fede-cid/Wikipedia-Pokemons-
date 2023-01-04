@@ -54,11 +54,11 @@ body {
 }
 
 .pokemon-image {
-  width: 404px;
+  width: 100%;
   position: relative;
-  left: -17px;
-  height: 350px;
-  top: -58px;
+  left: 4px;
+  height: 100%;
+  top: 1px;
 }
 .box-cart {
   font-size: 14px;

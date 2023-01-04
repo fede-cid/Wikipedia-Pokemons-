@@ -10,22 +10,21 @@ const getTypes = async () => {
     let types = await Type.findAll();
 
     if (types.length < 1) {
-
       const typeDB = await axios
         .get("https://pokeapi.co/api/v2/type", {
           headers: {
             "Accept-Encoding": "identity",
-},
+          },
         })
         .then((r) => r.data.results);
-        
+
       typeDB.forEach((t) => types.push(t.name));
 
       for (let i = 0; i < types.length; i++) {
         await Type.create({ name: types[i] });
       }
       let firstCharge = await Type.findAll();
-      
+
       return firstCharge;
     }
     return types;
@@ -34,4 +33,3 @@ const getTypes = async () => {
   }
 };
 module.exports = { getTypes };
-

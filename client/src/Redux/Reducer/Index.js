@@ -12,7 +12,7 @@ import {
   ORDER_BY_NAME_OR_STRENGH,
   RELOAD_POKEMONS,
   POST_POKEMON,
-  HOME
+  HOME,
 } from "../Actions/index";
 
 export const pokemonsPerPage = 12;
@@ -29,7 +29,6 @@ const initialState = {
   firstPokemonIndex: 0,
   lastPokemonIndex: 12,
   allPokemons: [],
-  home:true
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -38,6 +37,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         pokemons: action.payload,
+        pokemonSearch: [],
         allPokemons: action.payload,
         pokemonsTotalPage: Math.ceil(action.payload.length / pokemonsPerPage),
       };
@@ -84,7 +84,6 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         pokemonSearch: action.payload,
-        pokemonsTotalPage: 0,
       };
     case CREATE_POKEMON:
       return {
@@ -109,7 +108,7 @@ const rootReducer = (state = initialState, action) => {
     case HOME:
       return {
         ...state,
-        home: action.payload,
+        pokemonSearch: "",
       };
     case ACTUAL_PAGE:
       return {
@@ -133,35 +132,34 @@ const rootReducer = (state = initialState, action) => {
         pokemons: statusFiltered.length
           ? statusFiltered
           : [`${action.payload} Pokemons`],
-        pokemonsTotalPage: Math.ceil(statusFiltered.length / pokemonsPerPage)
+        pokemonsTotalPage: Math.ceil(statusFiltered.length / pokemonsPerPage),
+        currentPage:1
       };
 
     case FILTER_CREATED:
       let allPokemons2 = state.allPokemons;
-      let result
-      if(action.payload === "Created"){
-        result = allPokemons2.filter((el) => el.id.length > 1)
+      let result;
+      if (action.payload === "Created") {
+        result = allPokemons2.filter((el) => el.id.length > 1);
       }
-      if(action.payload === "All"){
-        result = allPokemons2
+      if (action.payload === "All") {
+        result = allPokemons2;
       }
-      if(action.payload === "Api"){
-        result = allPokemons2.filter((el) => typeof el.id === 'number' )
+      if (action.payload === "Api") {
+        result = allPokemons2.filter((el) => typeof el.id === "number");
       }
-   
+
       return {
         ...state,
-        pokemons:result,
-        pokemonsTotalPage: Math.ceil(result.length / pokemonsPerPage)
-,
+        pokemons: result,
+        currentPage:1,
+        pokemonsTotalPage: Math.ceil(result.length / pokemonsPerPage),
       };
-  
-
 
     case ORDER_BY_NAME_OR_STRENGH:
       let sortedArray;
 
-      if (action.payload === "asc") {
+      if (action.payload === "upward") {
         sortedArray = state.pokemons.sort(function (a, b) {
           if (a.name > b.name) {
             return 1;
@@ -172,7 +170,7 @@ const rootReducer = (state = initialState, action) => {
           return 0;
         });
       }
-      if (action.payload === "desc") {
+      if (action.payload === "descendant") {
         sortedArray = state.pokemons.sort(function (a, b) {
           if (a.name > b.name) {
             return -1;
@@ -183,7 +181,7 @@ const rootReducer = (state = initialState, action) => {
           return 0;
         });
       }
-      if (action.payload === "HAttack") {
+      if (action.payload === "HighAttack") {
         sortedArray = state.pokemons.sort(function (a, b) {
           if (a.attack > b.attack) {
             return -1;
@@ -194,7 +192,7 @@ const rootReducer = (state = initialState, action) => {
           return 0;
         });
       }
-      if (action.payload === "LAttack") {
+      if (action.payload === "LowAttack") {
         sortedArray = state.pokemons.sort(function (a, b) {
           if (a.attack > b.attack) {
             return 1;
@@ -234,6 +232,8 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         pokemons: sortedArray,
+        pokemonsTotalPage: Math.ceil(sortedArray.length / pokemonsPerPage),
+        currentPage:1
       };
     default:
       return state;

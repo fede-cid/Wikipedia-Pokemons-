@@ -37,7 +37,7 @@ export default function Home() {
         <div className="home">
           <div className="cards"> <NavBar isScrolling={scrollHeight} />
           <PokemonCard />
-          {pokemonSearch.length == 0 ? (
+          {pokemonSearch.length === 0  ? (
             <>
               <Pagination />
             </>
@@ -49,6 +49,3 @@ export default function Home() {
     </>
   );
 }
-
-// <button disabled= {actualPages == 1 ? true:false} className='button' onClick={() => dispatch(actions.getPagination(actualPages-1))}>PREVIOUS</button>
-// {page.map(p => <button className={actualPages == p ? 'button-principal' : actualPages + 3 >= p && actualPages - 3 <= p ?  'button'  : "holi"} onClick={()=> dispatch(actions.getPagination(p))} >{actualPages + 3 >= p && actualPages - 3 <= p ?  p : "..." }</button>)}

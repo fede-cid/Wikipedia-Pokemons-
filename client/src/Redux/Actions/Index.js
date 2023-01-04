@@ -16,6 +16,7 @@ export const ORDER_BY_NAME_OR_STRENGH = "ORDER_BY_NAME_OR_STRENGH";
 export const RELOAD_POKEMONS = "RELOAD_POKEMONS";
 export const POST_POKEMON = "POST_POKEMON";
 export const HOME = "HOME";
+export const CLEAN_CACHE = "CLEAN_CACHE";
 
 export const getPokemon = (name) => {
   if (name) {
@@ -40,6 +41,7 @@ export const getPokemon = (name) => {
 
 export function postPokemon(payload) {
   return async function (dispatch) {
+    console.log(payload)
     const pokemon = await axios.post("http://localhost:3001/pokemonsCreate", payload);
 
     return {
@@ -61,7 +63,6 @@ export const getPokemonDetailBYID = (id) => {
 export const getTypes = () => {
   return async function (dispatch) {
     const result = await axios.get("http://localhost:3001/pokemons/type");
-    console.log(result);
     return dispatch({
       type: GET_TYPE,
       payload: result.data,
@@ -109,16 +110,20 @@ export function filterCreated(payload) {
   };
 }
 
-export function orderByNameOrStrengh(payload) {
+export function orderByFilter(payload) {
   return {
     type: "ORDER_BY_NAME_OR_STRENGH",
     payload: payload,
   };
 }
-export function home(payload) {
+export function home() {
   return {
     type: "HOME",
-    payload: payload,
   };
 }
 
+export function cleanCache() {
+  return {
+    type: "CLEAN_CACHE",
+  };
+}

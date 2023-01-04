@@ -8,7 +8,7 @@ const Cover = () => {
       <img className="video" src={image} autoPlay loop muted alt="home" />
       <a className="buttonHome" href="/home">
         {" "}
-        Welcome to the Wiki Pokemon's
+        <button className="bn3637 bn38">Welcome to the Wiki Pokemon's</button>
       </a>
       <p></p>
     </div>

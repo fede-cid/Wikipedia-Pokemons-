@@ -7,18 +7,13 @@ import Music from "../Music/Music";
 
 const NavBar = ({ isScrolling }) => {
   const pokemonSearch = useSelector((state) => state.pokemonSearch);
-  const pokemonSearc = useSelector((state) => state.home);
-  console.log(pokemonSearc)
-  const toTheTop = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  };
+
   const dispatch = useDispatch();
   const [name, setName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setName("");
-    dispatch(actions.home(true))
     name.length > 0 && dispatch(actions.getPokemon(name));
   };
 
@@ -40,7 +35,7 @@ const NavBar = ({ isScrolling }) => {
         />
         <div className="music"><Music/></div>
         {pokemonSearch.length > 0 ? "" : <Order />}
-        <button className="buttonSearch" type="submit" onClick={()=>dispatch(actions.home(true))}>
+        <button className="buttonSearch" type="submit" onClick={()=>dispatch(actions.home())}>
           Search
         </button>
       </form>

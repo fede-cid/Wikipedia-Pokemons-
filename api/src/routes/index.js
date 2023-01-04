@@ -4,7 +4,7 @@ const {
   getAllPokemons,
   getPokemonApiSearch,
   deletePokemonByName,
-  postCreatePokemon,
+  
 } = require("./ControllerPokemons");
 const { getTypes } = require("./ControllerType");
 const { Pokemon, Type } = require("../db");
@@ -13,10 +13,11 @@ const router = Router();
 
 router.get("/pokemons", async (req, res) => {
   try {
-    const {name} = req.query
-    if(name){  const resultByApi = await getPokemonApiSearch(name);
+    const { name } = req.query;
+    if (name) {
+      const resultByApi = await getPokemonApiSearch(name);
       const resultByDB = await getPokemonDBSearch(undefined, name);
-    
+
       if (resultByApi) {
         res.status(200).json(resultByApi);
       }
@@ -29,9 +30,10 @@ router.get("/pokemons", async (req, res) => {
           .json({ msj: `No se encuentra el Pokemon ${name} solicitado` });
       }
     }
-    if(!name){
-    let results = await getAllPokemons();
-    res.status(200).json(results);}
+    if (!name) {
+      let results = await getAllPokemons();
+      res.status(200).json(results);
+    }
     // res.json(resultado);
   } catch (error) {
     res.status(404).json({ error: "error" });
@@ -45,7 +47,6 @@ router.get("/pokemons/type", async (req, res) => {
     res.status(404).json({ msj: `${error}` });
   }
 });
-
 
 router.get("/pokemonsId/:id", async (req, res) => {
   const { id } = req.params;
@@ -64,25 +65,40 @@ router.get("/pokemonsId/:id", async (req, res) => {
 });
 
 router.post("/pokemonsCreate", async (req, res) => {
-  let { id, name, types, image, attack, weight, height, hp, speed, defense } =
-    req.body;
-  try {
-    let createPokemon = await Pokemon.create({
-      id,
-      name,
-      types,
-      image,
-      attack,
-      weight,
-      height,
-      hp,
-      speed,
-      defense,
-    });
-    const result = await postCreatePokemon(createPokemon);
-    res.status(200).send(result);
+  try{
+  const { 
+    name,
+    types,
+    image,
+    attack,
+    weight,
+    height,
+    hp,
+    speed,
+    defense
+     
+	} = req.body;
+console.log('estoy aca' ,types)
+  const pokemonCreated = await Pokemon.create({
+  name,
+  image,
+  attack,
+  weight,
+  height,
+  hp,
+  speed,
+  defense
+     
+  })
+  console.log(types)
+  const pokemonTypes = await Type.findAll({
+    where: { id: types }
+  })
+
+  pokemonCreated.addType(pokemonTypes)
+  return res.send('Pokemon created successfuly')
   } catch (error) {
-    res.status(400).json({ msj: `${error}` });
+    res.status(400).json({ msj: `${error}` })
   }
 });
 

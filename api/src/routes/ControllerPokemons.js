@@ -14,7 +14,6 @@ const getPokemonApi = async () => {
     })
     .then((r) => r.data.results);
 
-    // console.log(results ,',primero yo')
   const pokemonInfo = [];
 
   for (let i = 0; i < results.length; i++) {
@@ -23,7 +22,6 @@ const getPokemonApi = async () => {
         "Accept-Encoding": "identity",
       },
     });
-    
 
     const pokeInfo = pokemons.data;
     pokemonInfo.push({
@@ -32,8 +30,6 @@ const getPokemonApi = async () => {
       types: pokeInfo.types.map((t) => t.type.name),
       image: pokeInfo.sprites.other["official-artwork"].front_default,
       attack: pokeInfo.stats[1].base_stat,
-      weight: pokeInfo.weight,
-      height: pokeInfo.height,
     });
   }
   return pokemonInfo;
@@ -111,7 +107,6 @@ const getPokemonApiSearch = async (id, name) => {
 //----------------------------funcion para traer el pokemon buscandolo en nuestra base de datos
 const getPokemonDBSearch = async (id, name) => {
   try {
-    console.log(name);
     if (name) {
       const searchPokemon = await Pokemon.findOne({
         where: {
