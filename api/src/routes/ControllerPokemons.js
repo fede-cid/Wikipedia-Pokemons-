@@ -7,7 +7,7 @@ const router = Router();
 //-----------------------funcion para el llamado de la api
 const getPokemonApi = async () => {
   const results = await axios
-    .get(`https://pokeapi.co/api/v2/pokemon?limit=40`, {
+    .get(`https://pokeapi.co/api/v2/pokemon?limit=100`, {
       headers: {
         "Accept-Encoding": "identity",
       },
@@ -80,6 +80,7 @@ const getPokemonApiSearch = async (id, name) => {
         ` https://pokeapi.co/api/v2/pokemon/${name}`
       );
     }
+    console.log(searchPokemonsApi)
     if (searchPokemonsApi) {
       let pokeInfo = searchPokemonsApi;
 

@@ -1,42 +1,108 @@
+.form {
+  width: 513px;
 
-
-.form{
-	width:300px;
-	padding:16px;
-	border-radius:10px;
-	margin:auto;
-	background-color:#ccc;
+  border-radius: 10px;
+  color: white;
+  max-height: 749px;
+  margin: 0 auto;
+  background-color: #252525;
+}
+.title-form{
+  margin: 0;
 }
 
-.label{
-	width:72px;
-	font-weight:bold;
-	display:inline-block;
+.label {
+  width: 72px;
+  font-weight: bold;
+  display: inline-block;
 }
 
-.input-text
-{
-	width:180px;
-	padding:3px 10px;
-	border:1px solid #f6f6f6;
-	border-radius:3px;
-	background-color:#f6f6f6;
-	margin:8px 0;
-	display:inline-block;
+.input-text {
+  width: 180px;
+  padding: 3px 10px;
+  border: 1px solid #f6f6f6;
+  border-radius: 3px;
+  background-color: #f6f6f6;
+  margin: 8px 0;
+  display: inline-block;
 }
 
-form input[type="submit"]{
-	width:100%;
-	padding:8px 16px;
-	margin-top:32px;
-	border:1px solid #000;
-	border-radius:5px;
-	display:block;
-	color:#fff;
-	background-color:#000;
-} 
-
-form input[type="submit"]:hover{
-	cursor:pointer;
+form input[type="submit"] {
+  width: 100%;
+  padding: 8px 16px;
+  margin-top: 32px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  display: block;
+  color: #fff;
+  background-color: #000;
 }
 
+form input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+.paragraph {
+  color: #d22f2fd9;
+  font-weight: 400;
+  margin: 0;
+  font-size: 17px;
+}
+
+.inter-line {
+  margin: 5px auto;
+}
+
+.btn-crear-off {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 30px;
+  height: 75px;
+  background-color: #6372f800;
+  width: 294px;
+  margin: 5px auto;
+  margin-top: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  backface-visibility: hidden;
+  border: 0.3rem solid transparent;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.on {
+  border-color: transparent;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.on:hover {
+  background-color: #0c0c0c;
+}
+
+
+.btn-home {
+	height: 96px;
+	line-height: 80px;
+	top: -96px;
+	font-size: 23px;
+	font-weight: 600;
+	width: 94px;
+	border-radius: 27px;
+	background: #0000006e;
+	position: relative;
+	left: 352px;
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+  }
+  
+  .btn-home:hover {
+	transition: 0.5s;
+	height: 112px;
+	width: 114px;
+	font-weight: 900;
+	font-size: 29px;
+	background: #000000;
+  }

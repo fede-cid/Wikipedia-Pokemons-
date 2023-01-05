@@ -25,8 +25,9 @@ router.get("/pokemons", async (req, res) => {
         res.status(200).json(resultByDB);
       }
       if (!resultByApi && !resultByDB) {
+        
         res
-          .status(400)
+          .status(204)
           .json({ msj: `No se encuentra el Pokemon ${name} solicitado` });
       }
     }
@@ -102,10 +103,11 @@ console.log('estoy aca' ,types)
   }
 });
 
-router.delete("/pokemons/:name", async (req, res) => {
-  let { name } = req.params;
+router.delete("/pokemonsDelete/", async (req, res) => {
+  let { name } = req.query;
   try {
-    res.status(200).json(await deletePokemonByName(name));
+     await deletePokemonByName(name)
+    res.status(200).json(`Has eliminado el Pokemon ${name} exitosamnte`);
     console.log(`Has eliminado el Pokemon ${name} exitosamnte`);
   } catch (error) {
     res.status(400).json({ msj: `${error}` });

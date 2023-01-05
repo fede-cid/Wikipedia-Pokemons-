@@ -6,28 +6,35 @@ import "./Order.css";
 function Order() {
   const dispatch = useDispatch();
 
-  const types = useSelector((state) => state.types);
+ 
+
   React.useEffect(() => {
     dispatch(actions.getTypes());
   }, []);
+  
+  const error = useSelector((state) => state.error);
+  const types = useSelector((state) => state.types);
   const toTheTop = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
   function handleFilterCreated(e) {
     e.preventDefault();
     dispatch(actions.filterCreated(e.target.value));
+    dispatch(actions.actualPage(1))
     toTheTop()
   }
 
   function handleFilterByType(e) {
     e.preventDefault();
     dispatch(actions.filterPokemonsByType(e.target.value));
+    dispatch(actions.actualPage(1))
     toTheTop()
   }
 
   function handleSort(e) {
     e.preventDefault();
     dispatch(actions.orderByFilter(e.target.value));
+    dispatch(actions.actualPage(1));
     toTheTop()
   }
 
@@ -53,6 +60,7 @@ function Order() {
           </option>
         ))}
       </select>
+      {error === 1 ?<span className="msj-error">NO SE A ENCONTRADO NINGUN POKEMON CON ESE TIPO DE FILTRADO </span> : undefined}
     </div>
   );
 }

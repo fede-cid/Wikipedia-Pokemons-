@@ -92,49 +92,90 @@ p {
   text-align: center;
 }
 
-
 .heart-Img {
   position: relative;
-  width: 50px;
-  left: 131px;
-  height: 55px;
-  top: 2px;
+    width: 42px;
+    left: 118px;
+    height: 43px;
+    top: 2px;
 }
 
-.heart{
+.heart {
   position: relative;
-    font-size: 60px;
-    bottom: 109px;
-    left: 68px;
+  font-size: 52px;
+  bottom: 98px;
+  left: 80px;
 }
 
-.type{
+.type {
   position: relative;
   bottom: 80px;
   right: 11px;
 }
-.defense{
+.defense {
   position: relative;
   bottom: 80px;
   right: 108px;
 }
-.speed{
+.speed {
   position: relative;
   bottom: 80px;
   right: 112px;
 }
-.weight{
+.weight {
   position: relative;
-  bottom: 240px;
+  bottom: 221px;
   right: 71px;
-
-
 }
-.height{
+.height {
   position: relative;
-    bottom: 254px;
-    right: 110px;
-
+  bottom: 236px;
+  right: 110px;
 }
 
+.btn-home {
+  height: 96px;
+  line-height: 80px;
+  top: -96px;
+  font-size: 23px;
+  font-weight: 600;
+  width: 94px;
+  border-radius: 27px;
+  background: #0000006e;
+  position: relative;
+  left: 352px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
 
+.btn-home:hover {
+  transition: 0.5s;
+  height: 112px;
+  width: 114px;
+  font-weight: 900;
+  font-size: 29px;
+  background: #000000;
+}
+.btn-delete {
+  height: 82px;
+
+  top: -105px;
+  font-size: 17px;
+  font-weight: 600;
+  width: 96px;
+  border-radius: 15px;
+  background: #d118009c;
+  position: relative;
+  left: -448px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  transition: 0.5s;
+  height: 98px;
+  font-size: 22px;
+  font-weight: 600;
+  width: 112px;
+  background: #f52004;
+}

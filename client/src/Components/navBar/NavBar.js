@@ -4,17 +4,19 @@ import "./NavBar.css";
 import * as actions from "../../Redux/Actions";
 import Order from "../Order/Order";
 import Music from "../Music/Music";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = ({ isScrolling }) => {
   const pokemonSearch = useSelector((state) => state.pokemonSearch);
-
+  const error = useSelector((state) => state.error);
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const [name, setName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setName("");
-    name.length > 0 && dispatch(actions.getPokemon(name));
+    name.length > 0 && dispatch(actions.getPokemon(name.toLowerCase()));
   };
 
   function onInputChange(e) {
@@ -31,13 +33,15 @@ const NavBar = ({ isScrolling }) => {
           onChange={onInputChange}
 
           value={name}
-          placeholder="Search POKEMONS"
+          placeholder={error === 2 ? 'busca otro pokemon' : error === 0 ? "Search Pokemon's"   : undefined}
         />
-        <div className="music"><Music/></div>
+        <div ><Music/></div>
+        
         {pokemonSearch.length > 0 ? "" : <Order />}
-        <button className="buttonSearch" type="submit" onClick={()=>dispatch(actions.home())}>
+        <button className="buttonSearch" type="submit" >
           Search
         </button>
+        <button className="btn-create" onClick={()=> navigate('/create')}>CREATE POKEMON</button>
       </form>
     </div>
   );

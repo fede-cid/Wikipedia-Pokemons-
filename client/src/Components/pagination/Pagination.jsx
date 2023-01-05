@@ -27,10 +27,10 @@ function Pagination() {
           toTheTop()
           dispatch(actions.actualPage(currentPage - 1))}}
       >
-        Previous
+        ◄
       </button>
       {"  "}
-      <span className="button">...</span> {"  "}
+      {"  "}
       {page.map((e) => (
         <>
           <button
@@ -47,10 +47,10 @@ function Pagination() {
           >
             {e}
           </button>
-          {"  "}
+
         </>
       ))}
-      <span className="button">...</span>{" "}
+      {" "}
       <button
         className="button"
         disabled={currentPage === pkpage ? true : false}
@@ -58,7 +58,7 @@ function Pagination() {
           toTheTop()
           dispatch(actions.actualPage(currentPage + 1))}}
       >
-        next
+        ►
       </button>
     </div>
   );

@@ -43,7 +43,7 @@ const PokemonCard = () => {
             </div>
             <button
               className="navbar-logo"
-              onClick={() => dispatch(actions.getPokemon())}
+              onClick={()=>dispatch(actions.home())}
             >
               {" "}
               HOME

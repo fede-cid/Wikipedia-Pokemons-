@@ -103,7 +103,7 @@ export function PokemonCreate() {
     });
     setTimeout(() => {
       navigate("/home");
-    }, 900);
+    }, 1900);
   };
 
   /**Errores */
@@ -173,11 +173,11 @@ export function PokemonCreate() {
         <div>
           <div></div>
           <form className="form">
-            <h1>Crea tu Pokemon !</h1>
+            <h1 className="title-form">Crea tu Pokemon !</h1>
             <div>
               <div>
-                <div>
-                  <div>
+                <div >
+                  <div className="inter-line">
                     <label className="label">Name:</label>
                     <input
                       // required
@@ -189,13 +189,13 @@ export function PokemonCreate() {
                       onChange={(e) => handlerChange(e)}
                       autoComplete="off"
                     />
-                    <span class={"highlight"}></span>
-                    <span class={"bar"}></span>
-                    <div>{errors.name && <p>{errors.name}</p>}</div>
+                    <span classNmae={"highlight"}></span>
+                    <span className={"bar"}></span>
+                    <div>{errors.name && <p className='paragraph'>{errors.name}</p>}</div>
                   </div>
                 </div>
-                <div>
-                  <div>
+                <div >
+                  <div className="inter-line">
                     <label className="label">Hp:</label>
                     <span value={input.hp}></span>
                     {/* <span>{input}</span> */}
@@ -210,9 +210,9 @@ export function PokemonCreate() {
                       onChange={(e) => handlerChange(e)}
                     />
                     <span>{input.hp}</span>
-                    <div>{errors.hp && <p>{errors.hp}</p>}</div>
+                    <div>{errors.hp && <p className='paragraph'>{errors.hp}</p>}</div>
                   </div>
-                  <div>
+                  <div className="inter-line">
                     <label className="label">Attack:</label>
                     <input
                     className="input-text"
@@ -225,9 +225,9 @@ export function PokemonCreate() {
                       autoComplete="off"
                     />
                     <span>{input.attack}</span>
-                    <div>{errors.attack && <p>{errors.attack}</p>}</div>
+                    <div>{errors.attack && <p className='paragraph'>{errors.attack}</p>}</div>
                   </div>
-                  <div>
+                  <div className="inter-line">
                     <label className="label">Defense:</label>
                     <input
                     className="input-text"
@@ -240,9 +240,9 @@ export function PokemonCreate() {
                       autoComplete="off"
                     />
                     <span>{input.defense}</span>
-                    <div>{errors.defense && <p>{errors.defense}</p>}</div>
+                    <div>{errors.defense && <p className='paragraph'>{errors.defense}</p>}</div>
                   </div>
-                  <div>
+                  <div className="inter-line">
                     <label className="label">Weight:</label>
                     <input
                     className="input-text"
@@ -255,13 +255,13 @@ export function PokemonCreate() {
                       autoComplete="off"
                     />
                     <span>{input.weight}</span>
-                    <div>{errors.weight && <p>{errors.weight}</p>}</div>
+                    <div>{errors.weight && <p className='paragraph'>{errors.weight}</p>}</div>
                   </div>
                 </div>
               </div>
-              {/*SEGUNDA COLUMNA */}
-              <div>
-                <div c>
+
+              <div >
+                <div className="inter-line">
                   <label className="label">Height:</label>
                   <input
                   className="input-text"
@@ -274,10 +274,10 @@ export function PokemonCreate() {
                     autoComplete="off"
                   />
                   <span>{input.height}</span>
-                  <div>{errors.height && <p>{errors.height}</p>}</div>
+                  <div>{errors.height && <p className='paragraph'>{errors.height}</p>}</div>
                 </div>
 
-                <div>
+                <div className="inter-line">
                   <label className="label">Speed:</label>
                   <input
                   className="input-text"
@@ -290,10 +290,10 @@ export function PokemonCreate() {
                     autoComplete="off"
                   />
                   <span>{input.speed}</span>
-                  <div>{errors.speed && <p>{errors.speed}</p>}</div>
+                  <div>{errors.speed && <p className='paragraph'>{errors.speed}</p>}</div>
                 </div>
 
-                <div>
+                <div className="inter-line">
                   <label className="label">Imagen:</label>
                   <input
                   className="input-text"
@@ -304,9 +304,9 @@ export function PokemonCreate() {
                     onChange={(e) => handlerChange(e)}
                     autoComplete="off"
                   />
-                  <div>{errors.image && <p>{errors.image}</p>}</div>
+                  <div>{errors.image && <p className='paragraph'>{errors.image}</p>}</div>
                 </div>
-                <div>
+                <div className="inter-line">
                   <label className="label"> Type:</label>
                   <select
                     defaultValue={"DEFAULT"}
@@ -325,7 +325,7 @@ export function PokemonCreate() {
                       })}
                   </select>
                 </div>
-                <div>
+                <div className="inter-line">
                   <label className="label">Type:</label>
                   <select
                     defaultValue={"DEFAULT"}
@@ -348,7 +348,8 @@ export function PokemonCreate() {
                 </div>
               </div>
             </div>
-            <button
+            <button 
+              className="btn-crear-off on"
               disabled={disabledButton}
               onClick={(e) => handlerCreatePokemon(e)}
             >
@@ -357,7 +358,7 @@ export function PokemonCreate() {
           </form>
         </div>
       </div>
-      <button>{"<-"} VOLVER</button>
+      <button className="btn-home" onClick={()=> navigate('/home')}>HOME</button>
     </div>
   );
 }

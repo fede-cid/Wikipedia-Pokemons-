@@ -79,3 +79,24 @@
     top: -102px;
     height: -7px;
 }
+
+.msj-error{
+
+    color: rgb(228, 3, 3);
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 40px rgb(0, 0, 0),
+      0 0 80px rgb(0, 0, 0),
+      0 0 90px rgb(0, 0, 0),
+      0 0 100px rgb(0, 0, 0),
+      0 0 150px rgb(0, 0, 0);
+      top: 31px;
+    font-size: 22px;
+    font-weight: 500;
+    left: -82px;
+    position: absolute;
+    width: 900px;
+}
+

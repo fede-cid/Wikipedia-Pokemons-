@@ -24,6 +24,7 @@ export const getPokemon = (name) => {
       const result = await axios.get(
         `http://localhost:3001/pokemons?name=${name}`
       );
+      console.log(result)
       return dispatch({
         type: GET_POKEMON_DETAIL_NAME,
         payload: result.data,
@@ -41,8 +42,11 @@ export const getPokemon = (name) => {
 
 export function postPokemon(payload) {
   return async function (dispatch) {
-    console.log(payload)
-    const pokemon = await axios.post("http://localhost:3001/pokemonsCreate", payload);
+    console.log(payload);
+    const pokemon = await axios.post(
+      "http://localhost:3001/pokemonsCreate",
+      payload
+    );
 
     return {
       type: POST_POKEMON,
@@ -50,7 +54,6 @@ export function postPokemon(payload) {
     };
   };
 }
-
 export const getPokemonDetailBYID = (id) => {
   return async function (dispatch) {
     const result = await axios.get(`http://localhost:3001/pokemonsId/${id}`);
@@ -69,6 +72,15 @@ export const getTypes = () => {
     });
   };
 };
+export const deletePokemon = (name) => {
+  return async function (dispatch) {
+    await axios.post(`http://localhost:3001/pokemonsDelete?name=${name}`);
+
+    return {
+      type: DELETE_POKEMON,
+    };
+  };
+};
 
 export const createPokemon = (payload) => {
   return {
@@ -84,13 +96,6 @@ export function reloadPokemons() {
     type: "RELOAD_POKEMONS",
   };
 }
-
-export const deletePokemon = (payload) => {
-  return {
-    type: DELETE_POKEMON,
-    payload: payload,
-  };
-};
 
 export const actualPage = (payload) => {
   return { type: ACTUAL_PAGE, payload: payload };

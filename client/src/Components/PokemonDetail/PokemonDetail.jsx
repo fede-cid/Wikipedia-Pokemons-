@@ -13,10 +13,14 @@ const PokemonDetail = () => {
   React.useEffect(() => {
     dispatch(actions.getPokemonDetailBYID(id));
   }, []);
-const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const pokeInfo = useSelector((state) => state.pokemonsDetails);
 
+  const botonDelete = (e) => {
+    dispatch(actions.deletePokemon());
+
+  };
   return (
     <div>
       {pokeInfo && pokeInfo.length !== 0 ? (
@@ -27,11 +31,13 @@ const navigate = useNavigate()
             <img className="pokebola" src={pokebola} alt="pokebola" />
             <div className="pokemon-cart">
               <div className="pokemon-cart-image">
-                { <img 
-                  className="pokemon-image"
-                  src={pokeInfo.image}
-                  alt={pokeInfo.name}
-                />}
+                {
+                  <img
+                    className="pokemon-image"
+                    src={pokeInfo.image}
+                    alt={pokeInfo.name}
+                  />
+                }
               </div>
               <div className="box-cart">
                 <div className="info-pokemon">
@@ -53,17 +59,17 @@ const navigate = useNavigate()
                     {pokeInfo.hp}
                   </h2>
                   <h2 className="weight">Weight : {pokeInfo.weight} cmm</h2>
-                  <h2 className="height">height : {pokeInfo.height} cmm</h2>
+                  <h2 className="height">Height : {pokeInfo.height} cmm</h2>
                 </div>
               </div>
             </div>
           </div>
-          <button
-              className="navbar-logo"
-              onClick={() => navigate('/home')}
-            >
-              HOME
-            </button>
+          <button className="btn-home" onClick={() => navigate("/home")}>
+            HOME
+          </button>
+         {typeof pokeInfo.id === 'number'? undefined : <button className="btn-delete" onClick={() => botonDelete(pokeInfo.name)}>
+            Delete Pokemon
+          </button>}
         </div>
       ) : (
         ""

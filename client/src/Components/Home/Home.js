@@ -8,7 +8,6 @@ import Pagination from "../pagination/Pagination";
 import Order from "../Order/Order";
 import Loading from "../loading/Loading";
 
-
 export default function Home() {
   React.useEffect(() => {
     dispatch(actions.getPokemon());
@@ -16,7 +15,7 @@ export default function Home() {
   }, [Order]);
   const pokemonSearch = useSelector((state) => state.pokemonSearch);
   const pokemons = useSelector((state) => state.pokemons);
-
+  const error = useSelector((state) => state.error);
   const dispatch = useDispatch();
 
   const [scrollHeight, setScrollHeight] = useState(0);
@@ -35,15 +34,23 @@ export default function Home() {
         </div>
       ) : (
         <div className="home">
-          <div className="cards"> <NavBar isScrolling={scrollHeight} />
-          <PokemonCard />
-          {pokemonSearch.length === 0  ? (
-            <>
-              <Pagination />
-            </>
-          ) : undefined}
+          <div className="cards">
+            {" "}
+            <NavBar isScrolling={scrollHeight} />
+            <PokemonCard />
+            {pokemonSearch.length === 0 && error === 2 ? (
+              <>
+                <span className="msj-error2">
+                  NO SE A ENCONTRADO NINGUN POKEMON CON ESE NOMBRE {" "}
+                </span>
+                <Pagination />
+              </>
+            ) : pokemonSearch.length === 0 ? (
+              <>
+                <Pagination />
+              </>
+            ) : undefined}
           </div>
-         
         </div>
       )}
     </>

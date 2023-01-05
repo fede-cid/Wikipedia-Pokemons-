@@ -29,6 +29,7 @@ const initialState = {
   firstPokemonIndex: 0,
   lastPokemonIndex: 12,
   allPokemons: [],
+  error:0
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -81,9 +82,18 @@ const rootReducer = (state = initialState, action) => {
         pokemonsDetails: action.payload,
       };
     case GET_POKEMON_DETAIL_NAME:
+let actualPokemon = action.payload
+
+let err = 0
+      if(!actualPokemon){
+        console.log('estoy aca')
+        actualPokemon = []
+        err = 2
+      }
       return {
         ...state,
-        pokemonSearch: action.payload,
+        pokemonSearch: actualPokemon,
+        error:err
       };
     case CREATE_POKEMON:
       return {
@@ -93,7 +103,6 @@ const rootReducer = (state = initialState, action) => {
     case DELETE_POKEMON:
       return {
         ...state,
-        pokemons: state.pokemons.filter((c) => c.id !== action.payload),
       };
     case GET_TYPE:
       return {
@@ -131,8 +140,10 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         pokemons: statusFiltered.length
           ? statusFiltered
-          : [`${action.payload} Pokemons`],
-        pokemonsTotalPage: Math.ceil(statusFiltered.length / pokemonsPerPage),
+          : allPokemons,
+          error: statusFiltered.length ? 0 : 1,
+        pokemonsTotalPage: statusFiltered.length
+        ? Math.ceil(statusFiltered.length / pokemonsPerPage) : Math.ceil(allPokemons.length / pokemonsPerPage),
         currentPage:1
       };
 
@@ -151,8 +162,9 @@ const rootReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        pokemons: result,
+        pokemons: result.length ? result : allPokemons2,
         currentPage:1,
+        error: result.length ? 0 : 1,
         pokemonsTotalPage: Math.ceil(result.length / pokemonsPerPage),
       };
 
@@ -215,18 +227,8 @@ const rootReducer = (state = initialState, action) => {
             }
             return 0;
           });
-        const dbPokes = state.pokemons
-          .filter((el) => el.createdInDb)
-          .sort(function (a, b) {
-            if (a.id > b.id) {
-              return 1;
-            }
-            if (b.id > a.id) {
-              return -1;
-            }
-            return 0;
-          });
-        sortedArray = [...apiPokes, ...dbPokes];
+
+        sortedArray = [...apiPokes];
       }
 
       return {

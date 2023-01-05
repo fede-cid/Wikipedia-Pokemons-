@@ -20,39 +20,51 @@
 }
 
 .inputSearch {
-  width: 204px;
-  left: 1px;
+  width: 160px;
+  left: -181px;
   font-size: 20px;
   top: 24px;
   font-weight: 500;
   position: relative;
   border-radius: 14px;
-  background-color: #f5f2f2;
+  background-color: #c7c0c0;
   height: 35px;
-  outline: none;
-  padding-left: 5px;
+  outline: none;;
 }
 
 .buttonSearch {
   width: 90px;
   height: 33px;
   border-radius: 10px;
-  background-color: white;
+  background-color: #c7c0c093;
   position: relative;
-  left: 155px;
+  left: -50px;
   top: -139px;
 }
 
 
 .buttonSearch:hover{
-background-color: black;
+background-color: rgba(19, 17, 17, 0.856);
 color: white;
 }
 
-.music{
-  width: 12px;
-  left: 1298px;
-  position: relative;
-  height: 0px;
-  top: -20px;
+
+.btn-create{
+  height: 90px;
+  bottom: 1em;
+  font-size: 17px;
+  font-weight: 600;
+  width: 124px;
+  border-radius: 15px;
+  background: #acacacc0;
+  position: fixed;
+  right: 1em;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
 }
+
+
+.btn-create:hover{
+  background-color: rgba(11, 11, 49, 0.856);
+  color: white;
+  }
