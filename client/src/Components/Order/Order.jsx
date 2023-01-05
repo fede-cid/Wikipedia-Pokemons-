@@ -6,12 +6,10 @@ import "./Order.css";
 function Order() {
   const dispatch = useDispatch();
 
- 
-
   React.useEffect(() => {
     dispatch(actions.getTypes());
   }, []);
-  
+
   const error = useSelector((state) => state.error);
   const types = useSelector((state) => state.types);
   const toTheTop = () => {
@@ -20,22 +18,22 @@ function Order() {
   function handleFilterCreated(e) {
     e.preventDefault();
     dispatch(actions.filterCreated(e.target.value));
-    dispatch(actions.actualPage(1))
-    toTheTop()
+    dispatch(actions.actualPage(1));
+    toTheTop();
   }
 
   function handleFilterByType(e) {
     e.preventDefault();
     dispatch(actions.filterPokemonsByType(e.target.value));
-    dispatch(actions.actualPage(1))
-    toTheTop()
+    dispatch(actions.actualPage(1));
+    toTheTop();
   }
 
   function handleSort(e) {
     e.preventDefault();
     dispatch(actions.orderByFilter(e.target.value));
     dispatch(actions.actualPage(1));
-    toTheTop()
+    toTheTop();
   }
 
   return (
@@ -60,7 +58,11 @@ function Order() {
           </option>
         ))}
       </select>
-      {error === 1 ?<span className="msj-error">NO SE A ENCONTRADO NINGUN POKEMON CON ESE TIPO DE FILTRADO </span> : undefined}
+      {error === 1 ? (
+        <span className="msj-error">
+          NO POKEMON COULD BE FOUND WITH THAT TYPE OF FILTERING{" "}
+        </span>
+      ) : undefined}
     </div>
   );
 }

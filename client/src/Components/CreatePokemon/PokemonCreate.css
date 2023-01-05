@@ -7,7 +7,7 @@
   margin: 0 auto;
   background-color: #252525;
 }
-.title-form{
+.title-form {
   margin: 0;
 }
 
@@ -82,27 +82,26 @@ form input[type="submit"]:hover {
   background-color: #0c0c0c;
 }
 
-
 .btn-home {
-	height: 96px;
-	line-height: 80px;
-	top: -96px;
-	font-size: 23px;
-	font-weight: 600;
-	width: 94px;
-	border-radius: 27px;
-	background: #0000006e;
-	position: relative;
-	left: 352px;
-	color: rgb(255, 255, 255);
-	cursor: pointer;
-  }
-  
-  .btn-home:hover {
-	transition: 0.5s;
-	height: 112px;
-	width: 114px;
-	font-weight: 900;
-	font-size: 29px;
-	background: #000000;
-  }
+  height: 96px;
+  line-height: 80px;
+  top: -96px;
+  font-size: 23px;
+  font-weight: 600;
+  width: 94px;
+  border-radius: 27px;
+  background: #0000006e;
+  position: relative;
+  left: 352px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.btn-home:hover {
+  transition: 0.5s;
+  height: 112px;
+  width: 114px;
+  font-weight: 900;
+  font-size: 29px;
+  background: #000000;
+}

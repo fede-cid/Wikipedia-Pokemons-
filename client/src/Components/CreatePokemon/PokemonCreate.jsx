@@ -85,7 +85,6 @@ export function PokemonCreate() {
 
   const handlerCreatePokemon = (e) => {
     e.preventDefault();
-    console.log(input);
     dispatch(actions.postPokemon({ ...input, name: input.name.toLowerCase() }));
     alert(
       "Felicitaciones has creado un nievo pokemon ve y buscalo en nuestra base de datos para ver como es su nueva tarjeta"
@@ -114,33 +113,50 @@ export function PokemonCreate() {
       allPokemons.find(
         (pokemon) => pokemon.name.toUpperCase() === input.name.toUpperCase()
       )
-    ){
-      errors.name = "Ya existe un pokemon con ese nombre, escoge otro!";}
-    if (!input.name){
-      errors.name = "Tu poke necesita un nombre, escoge el mejor";}
-    if (/[1-9]/.test(input.name)){
-      errors.name = "El nombre de tu poke no puede contener numeros";}
-    if (/[\s]/.test(input.name)){
-      errors.name = "El nombre de tu poke no puede contener espacios";}
-    if (/[^\w\s]/.test(input.name)){
+    ) {
+      errors.name = "Ya existe un pokemon con ese nombre, escoge otro!";
+    }
+    if (!input.name) {
+      errors.name = "Tu poke necesita un nombre, escoge el mejor";
+    }
+    if (/[1-9]/.test(input.name)) {
+      errors.name = "El nombre de tu poke no puede contener numeros";
+    }
+    if (/[\s]/.test(input.name)) {
+      errors.name = "El nombre de tu poke no puede contener espacios";
+    }
+    if (/[^\w\s]/.test(input.name)) {
       errors.name =
-        "El nombre de tu poke no puede contener caracteres especiales";}
-    if (input.name[0] === " "){
-      errors.name = "El primer caracter no puede ser un espacio";}
-    if (input.hp > 150 || input.hp < 1 || !/\d/g.test(input.hp)){
-      errors.hp = "El valor debe estar entre 1 y 150";}
-    if (input.attack > 150 || input.attack < 1 || !/\d/g.test(input.attack)){
-      errors.attack = "El valor debe estar entre 1 y 150 at";}
-    if (input.defense > 150 || input.defense < 1 || !/\d/g.test(input.defense)){
-      errors.defense = "El valor debe estar entre 1 y 150 def";}
-    if (input.speed > 150 || input.speed < 1 || !/\d/g.test(input.speed)){
-      errors.speed = "El valor debe estar entre 1 y 150 sp";}
-    if (input.height > 150 || input.height < 1 || !/\d/g.test(input.height)){
-      errors.height = "El valor debe estar entre 1 y 150";}
-    if (input.weight > 150 || input.weight < 1 || !/\d/g.test(input.weight)){
-      errors.weight = "El valor debe estar entre 1 y 150";}
-    if (!/\.(jpg|png|gif)$/i.test(input.image)){
-      errors.image = "La url que intentas colocar no es valida";}
+        "El nombre de tu poke no puede contener caracteres especiales";
+    }
+    if (input.name[0] === " ") {
+      errors.name = "El primer caracter no puede ser un espacio";
+    }
+    if (input.hp > 150 || input.hp < 1 || !/\d/g.test(input.hp)) {
+      errors.hp = "El valor debe estar entre 1 y 150";
+    }
+    if (input.attack > 150 || input.attack < 1 || !/\d/g.test(input.attack)) {
+      errors.attack = "El valor debe estar entre 1 y 150 at";
+    }
+    if (
+      input.defense > 150 ||
+      input.defense < 1 ||
+      !/\d/g.test(input.defense)
+    ) {
+      errors.defense = "El valor debe estar entre 1 y 150 def";
+    }
+    if (input.speed > 150 || input.speed < 1 || !/\d/g.test(input.speed)) {
+      errors.speed = "El valor debe estar entre 1 y 150 sp";
+    }
+    if (input.height > 150 || input.height < 1 || !/\d/g.test(input.height)) {
+      errors.height = "El valor debe estar entre 1 y 150";
+    }
+    if (input.weight > 150 || input.weight < 1 || !/\d/g.test(input.weight)) {
+      errors.weight = "El valor debe estar entre 1 y 150";
+    }
+    if (!/\.(jpg|png|gif)$/i.test(input.image)) {
+      errors.image = "La url que intentas colocar no es valida";
+    }
     return errors;
   }
   const [errors, setErrors] = useState({});
@@ -176,7 +192,7 @@ export function PokemonCreate() {
             <h1 className="title-form">Crea tu Pokemon !</h1>
             <div>
               <div>
-                <div >
+                <div>
                   <div className="inter-line">
                     <label className="label">Name:</label>
                     <input
@@ -191,16 +207,20 @@ export function PokemonCreate() {
                     />
                     <span classNmae={"highlight"}></span>
                     <span className={"bar"}></span>
-                    <div>{errors.name && <p className='paragraph'>{errors.name}</p>}</div>
+                    <div>
+                      {errors.name && (
+                        <p className="paragraph">{errors.name}</p>
+                      )}
+                    </div>
                   </div>
                 </div>
-                <div >
+                <div>
                   <div className="inter-line">
                     <label className="label">Hp:</label>
                     <span value={input.hp}></span>
                     {/* <span>{input}</span> */}
                     <input
-                    className="input-text"
+                      className="input-text"
                       type="range"
                       min="0"
                       max="150"
@@ -210,12 +230,14 @@ export function PokemonCreate() {
                       onChange={(e) => handlerChange(e)}
                     />
                     <span>{input.hp}</span>
-                    <div>{errors.hp && <p className='paragraph'>{errors.hp}</p>}</div>
+                    <div>
+                      {errors.hp && <p className="paragraph">{errors.hp}</p>}
+                    </div>
                   </div>
                   <div className="inter-line">
                     <label className="label">Attack:</label>
                     <input
-                    className="input-text"
+                      className="input-text"
                       type="range"
                       name="attack"
                       max="150"
@@ -225,12 +247,16 @@ export function PokemonCreate() {
                       autoComplete="off"
                     />
                     <span>{input.attack}</span>
-                    <div>{errors.attack && <p className='paragraph'>{errors.attack}</p>}</div>
+                    <div>
+                      {errors.attack && (
+                        <p className="paragraph">{errors.attack}</p>
+                      )}
+                    </div>
                   </div>
                   <div className="inter-line">
                     <label className="label">Defense:</label>
                     <input
-                    className="input-text"
+                      className="input-text"
                       type="range"
                       name="defense"
                       max="150"
@@ -240,12 +266,16 @@ export function PokemonCreate() {
                       autoComplete="off"
                     />
                     <span>{input.defense}</span>
-                    <div>{errors.defense && <p className='paragraph'>{errors.defense}</p>}</div>
+                    <div>
+                      {errors.defense && (
+                        <p className="paragraph">{errors.defense}</p>
+                      )}
+                    </div>
                   </div>
                   <div className="inter-line">
                     <label className="label">Weight:</label>
                     <input
-                    className="input-text"
+                      className="input-text"
                       type="range"
                       name="weight"
                       max="150"
@@ -255,16 +285,20 @@ export function PokemonCreate() {
                       autoComplete="off"
                     />
                     <span>{input.weight}</span>
-                    <div>{errors.weight && <p className='paragraph'>{errors.weight}</p>}</div>
+                    <div>
+                      {errors.weight && (
+                        <p className="paragraph">{errors.weight}</p>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div >
+              <div>
                 <div className="inter-line">
                   <label className="label">Height:</label>
                   <input
-                  className="input-text"
+                    className="input-text"
                     type="range"
                     name="height"
                     max="150"
@@ -274,13 +308,17 @@ export function PokemonCreate() {
                     autoComplete="off"
                   />
                   <span>{input.height}</span>
-                  <div>{errors.height && <p className='paragraph'>{errors.height}</p>}</div>
+                  <div>
+                    {errors.height && (
+                      <p className="paragraph">{errors.height}</p>
+                    )}
+                  </div>
                 </div>
 
                 <div className="inter-line">
                   <label className="label">Speed:</label>
                   <input
-                  className="input-text"
+                    className="input-text"
                     type="range"
                     name="speed"
                     max="150"
@@ -290,13 +328,17 @@ export function PokemonCreate() {
                     autoComplete="off"
                   />
                   <span>{input.speed}</span>
-                  <div>{errors.speed && <p className='paragraph'>{errors.speed}</p>}</div>
+                  <div>
+                    {errors.speed && (
+                      <p className="paragraph">{errors.speed}</p>
+                    )}
+                  </div>
                 </div>
 
                 <div className="inter-line">
                   <label className="label">Imagen:</label>
                   <input
-                  className="input-text"
+                    className="input-text"
                     type="text"
                     name="image"
                     value={input.image}
@@ -304,7 +346,11 @@ export function PokemonCreate() {
                     onChange={(e) => handlerChange(e)}
                     autoComplete="off"
                   />
-                  <div>{errors.image && <p className='paragraph'>{errors.image}</p>}</div>
+                  <div>
+                    {errors.image && (
+                      <p className="paragraph">{errors.image}</p>
+                    )}
+                  </div>
                 </div>
                 <div className="inter-line">
                   <label className="label"> Type:</label>
@@ -348,7 +394,7 @@ export function PokemonCreate() {
                 </div>
               </div>
             </div>
-            <button 
+            <button
               className="btn-crear-off on"
               disabled={disabledButton}
               onClick={(e) => handlerCreatePokemon(e)}
@@ -358,7 +404,9 @@ export function PokemonCreate() {
           </form>
         </div>
       </div>
-      <button className="btn-home" onClick={()=> navigate('/home')}>HOME</button>
+      <button className="btn-home" onClick={() => navigate("/home")}>
+        HOME
+      </button>
     </div>
   );
 }

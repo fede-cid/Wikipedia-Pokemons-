@@ -1,7 +1,5 @@
-
-
 .pokemons-container {
-  top:30px;
+  top: 30px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -114,251 +112,77 @@
 
 #fire {
   background: rgb(221, 112, 97);
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
-  top: 15px;
-
 }
 #grass {
   background: rgb(111, 165, 111);
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
 }
 #water {
   background: rgb(108, 191, 230);
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
 }
 #normal {
   background: rgb(182, 180, 180);
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
 }
 
 #fighting {
   background: rgb(100, 100, 100);
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
 }
 
 #flying {
   background: rgb(167, 237, 241);
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
 }
 #poison {
   background: rgb(182, 135, 176);
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
 }
 
 #ground {
   background: rgb(80, 50, 16);
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
 }
 
 #rock {
   background: rgb(216, 154, 95);
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
 }
 
 #bug {
   background: rgb(163, 233, 154);
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
 }
 
 #ghost {
   background: rgb(24, 15, 141);
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
 }
 
 #steel {
   background: rgb(65, 65, 65);
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
 }
 
 #electric {
   background: rgb(241, 228, 38);
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
 }
 
 #psychic {
   background: rgb(150, 81, 81);
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
 }
 
 #Ice {
   background: rgb(0, 217, 255);
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
 }
 
 #dragon {
   background: rgb(54, 73, 243);
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
 }
 
 #dark {
   background: rgb(24, 22, 22);
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
 }
 
 #fairy {
   background: rgb(235, 177, 177);
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
 }
 
 #unknown {
   background: rgb(100, 100, 100);
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
 }
 
-.pokemon-search > h1{
-	
+.pokemon-search > h1 {
   display: flex;
   width: 700px;
   height: 54px;
@@ -373,10 +197,3 @@
   margin: auto;
   overflow: hidden;
 }
-
-
-
-
-
-
-

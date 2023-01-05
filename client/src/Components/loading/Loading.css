@@ -1,24 +1,22 @@
 .cover-conteiner {
-    height: 100vh;
-    width: 100%;
-    object-fit: contain;
-    box-shadow: inset 0 0 0 1000px rgba(253, 253, 253, 0);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 0ch;
-  }
-  
-  .video {
-    object-fit: cover;
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    z-index: -1;
-  }
-  
+  height: 100vh;
+  width: 100%;
+  object-fit: contain;
+  box-shadow: inset 0 0 0 1000px rgba(253, 253, 253, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 0ch;
+}
 
+.video {
+  object-fit: cover;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+}
 
 .loader {
   font-size: 150px;
@@ -31,24 +29,17 @@
   letter-spacing: 2px;
   position: relative;
   box-sizing: border-box;
-  text-shadow:
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff,
-  0 0 40px rgb(0, 0, 0),
-  0 0 80px rgb(0, 0, 0),
-  0 0 90px rgb(0, 0, 0),
-  0 0 100px rgb(0, 0, 0),
-  0 0 150px rgb(0, 0, 0);
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px rgb(0, 0, 0),
+    0 0 80px rgb(0, 0, 0), 0 0 90px rgb(0, 0, 0), 0 0 100px rgb(0, 0, 0),
+    0 0 150px rgb(0, 0, 0);
 }
 .loader::after {
-  content: 'Loading';
+  content: "Loading";
   position: absolute;
   left: 0;
   top: 0;
   color: #263238;
-  text-shadow: 0 0 2px #FFF, 0 0 1px #FFF, 0 0 1px #FFF;
- 
+  text-shadow: 0 0 2px #fff, 0 0 1px #fff, 0 0 1px #fff;
 
   width: 100%;
   height: 100%;
@@ -64,4 +55,18 @@
   100% {
     height: 0%;
   }
+}
+
+.btn-reload {
+  height: 90px;
+  bottom: 1em;
+  font-size: 17px;
+  font-weight: 600;
+  width: 124px;
+  border-radius: 15px;
+  background: #acacacc0;
+  position: fixed;
+  right: 1em;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
 }

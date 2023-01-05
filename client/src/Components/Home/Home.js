@@ -41,7 +41,7 @@ export default function Home() {
             {pokemonSearch.length === 0 && error === 2 ? (
               <>
                 <span className="msj-error2">
-                  NO SE A ENCONTRADO NINGUN POKEMON CON ESE NOMBRE {" "}
+                  COULD NOT FIND ANY POKEMON WITH THAT NAME{" "}
                 </span>
                 <Pagination />
               </>

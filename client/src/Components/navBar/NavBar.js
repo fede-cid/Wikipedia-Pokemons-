@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const NavBar = ({ isScrolling }) => {
   const pokemonSearch = useSelector((state) => state.pokemonSearch);
   const error = useSelector((state) => state.error);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [name, setName] = useState("");
 
@@ -20,7 +20,6 @@ const NavBar = ({ isScrolling }) => {
   };
 
   function onInputChange(e) {
-   
     setName(e.target.value);
   }
 
@@ -31,17 +30,26 @@ const NavBar = ({ isScrolling }) => {
           className="inputSearch"
           type="text"
           onChange={onInputChange}
-
           value={name}
-          placeholder={error === 2 ? 'busca otro pokemon' : error === 0 ? "Search Pokemon's"   : undefined}
+          placeholder={
+            error === 2
+              ? "Pokemon not found"
+              : error === 0
+              ? "Search Pokemon's"
+              : undefined
+          }
         />
-        <div ><Music/></div>
-        
+        <div>
+          <Music />
+        </div>
+
         {pokemonSearch.length > 0 ? "" : <Order />}
-        <button className="buttonSearch" type="submit" >
+        <button className="buttonSearch" type="submit">
           Search
         </button>
-        <button className="btn-create" onClick={()=> navigate('/create')}>CREATE POKEMON</button>
+        <button className="btn-create" onClick={() => navigate("/create")}>
+          CREATE POKEMON
+        </button>
       </form>
     </div>
   );

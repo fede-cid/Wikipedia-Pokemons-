@@ -2,7 +2,7 @@
   border: none;
   /* padding: 15px; */
   font-size: 15px;
-  background-image: url('../media/pokebola-paginado.gif');
+  background-image: url("../media/pokebola-paginado.gif");
   text-decoration: none;
   font-weight: 600;
   color: #000000;
@@ -19,10 +19,10 @@
 }
 
 .button-principal {
-  border: none ;
+  border: none;
   padding: 15px;
   font-size: 15px;
- background-image: url('../media/paginado.gif');
+  background-image: url("../media/paginado.gif");
   text-decoration: none;
   font-weight: 600;
   color: #4e0e0e;
@@ -38,13 +38,12 @@
   text-align: center;
 }
 
-
 .button-false {
   display: none;
 }
 
-.pagination{
+.pagination {
   margin-top: 59px;
   position: relative;
-  bottom: 20px
+  bottom: 20px;
 }

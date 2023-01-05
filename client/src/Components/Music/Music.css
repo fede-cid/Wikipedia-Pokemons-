@@ -1,26 +1,26 @@
-.player{
-    background-color: rgba(216, 181, 181, 0);
-    color: white;
-    border: none;
-    width: 10px;
+.player {
+  background-color: rgba(216, 181, 181, 0);
+  color: white;
+  border: none;
+  width: 10px;
 }
 
-.logo-music{
-    display: flex;
-    flex-direction: row;
-    width: 170px;
-    position: fixed;
-    left: 1023px;
-    height: 0px;
-    justify-content: center;
-    align-items: center;
+.logo-music {
+  display: flex;
+  flex-direction: row;
+  width: 170px;
+  position: fixed;
+  left: 1023px;
+  height: 0px;
+  justify-content: center;
+  align-items: center;
 }
 
-.audio-player{
-    width: 140px;
+.audio-player {
+  width: 140px;
 }
 
-.image-logo{
-    height: 60px;
-    width: 170px;
+.image-logo {
+  height: 60px;
+  width: 170px;
 }

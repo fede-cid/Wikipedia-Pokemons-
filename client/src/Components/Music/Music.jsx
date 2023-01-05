@@ -1,12 +1,14 @@
 import React from "react";
 import "./Music.css";
 import audio from "./AtrapalosYa.mp3";
-import image from '../media/atrapalosya_logo.png'
+import image from "../media/atrapalosya_logo.png";
 
 function Music() {
   return (
     <div className="logo-music">
-      <div ><img className="image-logo" src={image} alt={'name'}/></div>
+      <div>
+        <img className="image-logo" src={image} alt={"name"} />
+      </div>
       <button className="player">
         <audio controls className="audio-player">
           <source src={audio} type="audio/mpeg" />

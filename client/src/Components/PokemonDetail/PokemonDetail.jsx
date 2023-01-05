@@ -19,7 +19,6 @@ const PokemonDetail = () => {
 
   const botonDelete = (e) => {
     dispatch(actions.deletePokemon());
-
   };
   return (
     <div>
@@ -67,9 +66,14 @@ const PokemonDetail = () => {
           <button className="btn-home" onClick={() => navigate("/home")}>
             HOME
           </button>
-         {typeof pokeInfo.id === 'number'? undefined : <button className="btn-delete" onClick={() => botonDelete(pokeInfo.name)}>
-            Delete Pokemon
-          </button>}
+          {typeof pokeInfo.id === "number" ? undefined : (
+            <button
+              className="btn-delete"
+              onClick={() => botonDelete(pokeInfo.name)}
+            >
+              Delete Pokemon
+            </button>
+          )}
         </div>
       ) : (
         ""

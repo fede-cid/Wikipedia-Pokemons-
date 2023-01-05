@@ -19,13 +19,14 @@ function Pagination() {
   };
 
   return (
-    <div className='pagination'>
+    <div className="pagination">
       <button
         className="button"
         disabled={currentPage === 1 ? true : false}
         onClick={() => {
-          toTheTop()
-          dispatch(actions.actualPage(currentPage - 1))}}
+          toTheTop();
+          dispatch(actions.actualPage(currentPage - 1));
+        }}
       >
         ◄
       </button>
@@ -42,21 +43,21 @@ function Pagination() {
                 : "button-false"
             }
             onClick={() => {
-              toTheTop()
-              dispatch(actions.actualPage(e))}}
+              toTheTop();
+              dispatch(actions.actualPage(e));
+            }}
           >
             {e}
           </button>
-
         </>
-      ))}
-      {" "}
+      ))}{" "}
       <button
         className="button"
         disabled={currentPage === pkpage ? true : false}
         onClick={() => {
-          toTheTop()
-          dispatch(actions.actualPage(currentPage + 1))}}
+          toTheTop();
+          dispatch(actions.actualPage(currentPage + 1));
+        }}
       >
         ►
       </button>

@@ -29,7 +29,7 @@ const initialState = {
   firstPokemonIndex: 0,
   lastPokemonIndex: 12,
   allPokemons: [],
-  error:0
+  error: 0,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -82,18 +82,17 @@ const rootReducer = (state = initialState, action) => {
         pokemonsDetails: action.payload,
       };
     case GET_POKEMON_DETAIL_NAME:
-let actualPokemon = action.payload
+      let actualPokemon = action.payload;
 
-let err = 0
-      if(!actualPokemon){
-        console.log('estoy aca')
-        actualPokemon = []
-        err = 2
+      let err = 0;
+      if (!actualPokemon) {
+        actualPokemon = [];
+        err = 2;
       }
       return {
         ...state,
         pokemonSearch: actualPokemon,
-        error:err
+        error: err,
       };
     case CREATE_POKEMON:
       return {
@@ -138,13 +137,12 @@ let err = 0
 
       return {
         ...state,
-        pokemons: statusFiltered.length
-          ? statusFiltered
-          : allPokemons,
-          error: statusFiltered.length ? 0 : 1,
+        pokemons: statusFiltered.length ? statusFiltered : allPokemons,
+        error: statusFiltered.length ? 0 : 1,
         pokemonsTotalPage: statusFiltered.length
-        ? Math.ceil(statusFiltered.length / pokemonsPerPage) : Math.ceil(allPokemons.length / pokemonsPerPage),
-        currentPage:1
+          ? Math.ceil(statusFiltered.length / pokemonsPerPage)
+          : Math.ceil(allPokemons.length / pokemonsPerPage),
+        currentPage: 1,
       };
 
     case FILTER_CREATED:
@@ -163,7 +161,7 @@ let err = 0
       return {
         ...state,
         pokemons: result.length ? result : allPokemons2,
-        currentPage:1,
+        currentPage: 1,
         error: result.length ? 0 : 1,
         pokemonsTotalPage: Math.ceil(result.length / pokemonsPerPage),
       };
@@ -235,7 +233,7 @@ let err = 0
         ...state,
         pokemons: sortedArray,
         pokemonsTotalPage: Math.ceil(sortedArray.length / pokemonsPerPage),
-        currentPage:1
+        currentPage: 1,
       };
     default:
       return state;

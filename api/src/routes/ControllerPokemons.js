@@ -80,7 +80,7 @@ const getPokemonApiSearch = async (id, name) => {
         ` https://pokeapi.co/api/v2/pokemon/${name}`
       );
     }
-    console.log(searchPokemonsApi)
+
     if (searchPokemonsApi) {
       let pokeInfo = searchPokemonsApi;
 

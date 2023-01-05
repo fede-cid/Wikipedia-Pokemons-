@@ -10,12 +10,11 @@ const PokemonCard = () => {
   const first = useSelector((state) => state.firstPokemonIndex);
   const pokemonOne = useSelector((state) => state.pokemonSearch);
   const pokemons = useSelector((state) => state.pokemons);
- 
 
   return (
     <>
       <div className="pokemons-container">
-        { pokemonOne && pokemonOne.length !== 0 ? (
+        {pokemonOne && pokemonOne.length !== 0 ? (
           <div className="box">
             <div className="card">
               <div id={`${pokemonOne.types[0].name}`} className={`imgBx`}>
@@ -43,28 +42,33 @@ const PokemonCard = () => {
             </div>
             <button
               className="navbar-logo"
-              onClick={()=>dispatch(actions.home())}
+              onClick={() => dispatch(actions.home())}
             >
               {" "}
               HOME
             </button>
           </div>
         ) : (
-          pokemons.slice(first, last).map((c,index) => (
+          pokemons.slice(first, last).map((c, index) => (
             <div key={`${index}${c.id}`} className="box">
               <div className="card">
                 <div id={`${c.types[0]}`} className={`imgBx `}>
                   <a href={`/pokemons/${c.id}`}>
-                    <img src={c.image}  alt={c.name} />
+                    <img src={c.image} alt={c.name} />
                   </a>
                 </div>
                 <div className="details">
                   <h2>
                     Name: {c.name} Attack: {c.attack}
                     <br></br>
-                    <span>Type: {c.id.length>1 ? c.types.map((type) => {
-                        return type.name + " ";
-                      }) : c.types.toString()}</span>
+                    <span>
+                      Type:{" "}
+                      {c.id.length > 1
+                        ? c.types.map((type) => {
+                            return type.name + " ";
+                          })
+                        : c.types.toString()}
+                    </span>
                     <br></br>
                   </h2>
                 </div>
