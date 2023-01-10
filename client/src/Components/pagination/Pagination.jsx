@@ -38,7 +38,7 @@ function Pagination() {
             className={
               currentPage === e
                 ? "button-principal"
-                : currentPage + 1 >= e && currentPage - 1 <= e
+                : currentPage + 3 >= e && currentPage - 3 <= e
                 ? "button"
                 : "button-false"
             }
