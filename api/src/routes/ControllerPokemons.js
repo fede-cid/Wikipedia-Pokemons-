@@ -7,7 +7,7 @@ const router = Router();
 //-----------------------funcion para el llamado de la api
 const getPokemonApi = async () => {
   const results = await axios
-    .get(`https://pokeapi.co/api/v2/pokemon?limit=40`, {
+    .get(`https://pokeapi.co/api/v2/pokemon?limit=150`, {
       headers: {
         "Accept-Encoding": "identity",
       },
