@@ -24,4 +24,5 @@
   left: -82px;
   position: absolute;
   width: 900px;
+  transition: 1s;
 }

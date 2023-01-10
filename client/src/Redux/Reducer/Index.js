@@ -122,8 +122,6 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         currentPage: action.payload,
-        lastPage: action.payload - 1,
-        nextPage: action.payload + 1,
         firstPokemonIndex: pokemonsPerPage * (action.payload - 1),
         lastPokemonIndex: pokemonsPerPage * action.payload,
       };

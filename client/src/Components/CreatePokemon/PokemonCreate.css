@@ -1,11 +1,13 @@
 .form {
   width: 513px;
-
+  border: solid 2px wheat;
   border-radius: 10px;
   color: white;
   max-height: 749px;
   margin: 0 auto;
   background-color: #252525;
+  transition: 0.3s;
+  
 }
 .title-form {
   margin: 0;
@@ -74,11 +76,13 @@ form input[type="submit"]:hover {
 }
 
 .on {
+  transition: 0.5s;
   border-color: transparent;
   transition: background-color 0.3s ease-in-out;
 }
 
 .on:hover {
+  transition: 0.5s;
   background-color: #0c0c0c;
 }
 

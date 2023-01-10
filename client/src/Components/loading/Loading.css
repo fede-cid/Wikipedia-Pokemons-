@@ -70,3 +70,12 @@
   color: rgb(0, 0, 0);
   cursor: pointer;
 }
+
+.btn-reload:hover {
+  background-color: black;
+  color: red;
+  transition: 1s;
+  height: 100px;
+  width: 134px;
+  border: solid 2px wheat
+}

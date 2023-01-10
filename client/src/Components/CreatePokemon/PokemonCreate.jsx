@@ -114,48 +114,48 @@ export function PokemonCreate() {
         (pokemon) => pokemon.name.toUpperCase() === input.name.toUpperCase()
       )
     ) {
-      errors.name = "Ya existe un pokemon con ese nombre, escoge otro!";
+      errors.name = "There is already a pokemon with that name, choose another one!";
     }
     if (!input.name) {
-      errors.name = "Tu poke necesita un nombre, escoge el mejor";
+      errors.name = "Your Pokemon's needs a name, choose the best one";
     }
     if (/[1-9]/.test(input.name)) {
-      errors.name = "El nombre de tu poke no puede contener numeros";
+      errors.name = "The name of your poke cannot contain numbers";
     }
     if (/[\s]/.test(input.name)) {
-      errors.name = "El nombre de tu poke no puede contener espacios";
+      errors.name = "Your Pokemon's name cannot contain spaces.";
     }
     if (/[^\w\s]/.test(input.name)) {
       errors.name =
-        "El nombre de tu poke no puede contener caracteres especiales";
+        "Your poke name cannot contain special characters";
     }
     if (input.name[0] === " ") {
-      errors.name = "El primer caracter no puede ser un espacio";
+      errors.name = "The first character cannot be a space";
     }
     if (input.hp > 150 || input.hp < 1 || !/\d/g.test(input.hp)) {
-      errors.hp = "El valor debe estar entre 1 y 150";
+      errors.hp = "The value must be between 1 and 150 HP";
     }
     if (input.attack > 150 || input.attack < 1 || !/\d/g.test(input.attack)) {
-      errors.attack = "El valor debe estar entre 1 y 150 at";
+      errors.attack = "The value must be between 1 and 150 attack";
     }
     if (
       input.defense > 150 ||
       input.defense < 1 ||
       !/\d/g.test(input.defense)
     ) {
-      errors.defense = "El valor debe estar entre 1 y 150 def";
+      errors.defense = "The value must be between 1 and 150 defense";
     }
     if (input.speed > 150 || input.speed < 1 || !/\d/g.test(input.speed)) {
-      errors.speed = "El valor debe estar entre 1 y 150 sp";
+      errors.speed = "The value must be between 1 and 150 speed";
     }
     if (input.height > 150 || input.height < 1 || !/\d/g.test(input.height)) {
-      errors.height = "El valor debe estar entre 1 y 150";
+      errors.height = "The value must be between 1 and 150 height";
     }
     if (input.weight > 150 || input.weight < 1 || !/\d/g.test(input.weight)) {
-      errors.weight = "El valor debe estar entre 1 y 150";
+      errors.weight = "The value must be between 1 and 150 weight";
     }
     if (!/\.(jpg|png|gif)$/i.test(input.image)) {
-      errors.image = "La url que intentas colocar no es valida";
+      errors.image = "The url you are trying to place is not valid";
     }
     return errors;
   }
