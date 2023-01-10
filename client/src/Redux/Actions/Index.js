@@ -22,7 +22,7 @@ export const getPokemon = (name) => {
   if (name) {
     return async function (dispatch) {
       const result = await axios.get(
-        `http://localhost:3001/pokemons?name=${name}`
+        `https://wiki-pokemons.onrender.com/pokemons?name=${name}`
       );
       return dispatch({
         type: GET_POKEMON_DETAIL_NAME,
@@ -31,7 +31,7 @@ export const getPokemon = (name) => {
     };
   }
   return async function (dispatch) {
-    const result = await axios.get("http://localhost:3001/pokemons");
+    const result = await axios.get("https://wiki-pokemons.onrender.com/pokemons");
     return dispatch({
       type: GET_POKEMON,
       payload: result.data,
@@ -42,7 +42,7 @@ export const getPokemon = (name) => {
 export function postPokemon(payload) {
   return async function (dispatch) {
     const pokemon = await axios.post(
-      "http://localhost:3001/pokemonsCreate",
+      "https://wiki-pokemons.onrender.com/pokemonsCreate",
       payload
     );
 
@@ -54,7 +54,7 @@ export function postPokemon(payload) {
 }
 export const getPokemonDetailBYID = (id) => {
   return async function (dispatch) {
-    const result = await axios.get(`http://localhost:3001/pokemonsId/${id}`);
+    const result = await axios.get(`https://wiki-pokemons.onrender.com/pokemonsId/${id}`);
     return dispatch({
       type: GET_POKEMON_DETAIL_ID,
       payload: result.data,
@@ -63,7 +63,7 @@ export const getPokemonDetailBYID = (id) => {
 };
 export const getTypes = () => {
   return async function (dispatch) {
-    const result = await axios.get("http://localhost:3001/pokemons/type");
+    const result = await axios.get("https://wiki-pokemons.onrender.com/pokemons/type");
     return dispatch({
       type: GET_TYPE,
       payload: result.data,
@@ -72,7 +72,7 @@ export const getTypes = () => {
 };
 export const deletePokemon = (name) => {
   return async function (dispatch) {
-    await axios.post(`http://localhost:3001/pokemonsDelete?name=${name}`);
+    await axios.post(`https://wiki-pokemons.onrender.com/pokemonsDelete?name=${name}`);
 
     return {
       type: DELETE_POKEMON,
