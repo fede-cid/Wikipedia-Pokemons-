@@ -32,7 +32,7 @@ const initialState = {
   error: 0,
 };
 
-const rootReducer = (state = initialState, action) => {
+export function rootReducer (state = initialState, action) {
   switch (action.type) {
     case GET_POKEMON:
       return {
