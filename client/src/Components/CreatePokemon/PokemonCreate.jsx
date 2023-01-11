@@ -101,7 +101,7 @@ export function PokemonCreate() {
       types: [],
     });
     setTimeout(() => {
-      navigate("/home");
+      navigate("/create");
     }, 1900);
   };
 

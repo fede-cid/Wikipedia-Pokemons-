@@ -109,3 +109,35 @@ form input[type="submit"]:hover {
   font-size: 29px;
   background: #000000;
 }
+
+@media screen and (max-width: 767px) {
+  .form {
+    width: 90%;
+    max-height: none;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .label {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 8px;
+  }
+  
+  .input-text {
+    width: 100%;
+  }
+  
+  form input[type="submit"] {
+    margin-top: 16px;
+  }
+  
+  .btn-crear-off, .btn-home {
+    width: 100%;
+    margin: 10px auto;
+  }
+  
+  .btn-home {
+    left: unset;
+  }
+}
